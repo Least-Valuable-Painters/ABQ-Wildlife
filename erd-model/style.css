@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column-1 {
+    float: left;
+    width: 50%;
+    padding-left: 500px;
+    height: 475px;
+}
+
+.column-2 {
+    float: left;
+    width: 50%;
+    padding-left: 150px;
+    height: 475px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container-erd-model {
+    background-color: #989898;
+    text-align: center;
+}

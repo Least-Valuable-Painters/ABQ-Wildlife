@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conceptual Model & ERD Diagram</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<h1>Conceptual Model</h1>
+
+<div class="row">
+    <div class="column-1" style="background-color:#f5f5f5;">
+        <h2>user</h2>
+        <ul>
+            <li>userId (primary key)</li>
+            <li>userActivationToken</li>
+            <li>userEmail</li>
+            <li>userHash</li>
+            <li>userIsAdmin</li>
+            <li>username</li>
+        </ul>
+
+        <h2>location</h2>
+        <ul>
+            <li>locationId (primary key)</li>
+            <li>locationDateCreated</li>
+            <li>locationDescription</li>
+            <li>locationLat</li>
+            <li>locationLng</li>
+            <li>locationName</li>
+        </ul>
+
+    </div>
+
+    <div class="column-2" style="background-color:#f5f5f5;">
+        <h2>comment</h2>
+        <ul>
+            <li>commentId (primary key)</li>
+            <li>commentImageId (foreign key)</li>
+            <li>commentUserId (foreign key)</li>
+            <li>commentContent</li>
+            <li>commentDate</li>
+        </ul>
+
+     <h2>image</h2>
+     <ul>
+            <li>imageId (primary key)</li>
+            <li>imageLocationId (foreign key)</li>
+            <li>imageUserId (foreign key)</li>
+            <li>imageCloudinaryId</li>
+            <li>imageDateCreated</li>
+            <li>imageUrl</li>
+        </ul>
+
+        <h2>favorite</h2>
+        <ul>
+            <li>favoriteLocationId (foreign key)</li>
+            <li>favoriteUserId (foreign key)</li>
+        </ul>
+
+    </div>
+</div>
+
+<h1>ERD Model</h1>
+
+<div class="container-erd-model">
+
+    <img src="wildlife-erd-model.png" alt="ERD">
+</div>
+
+<body>
+
+</body>
+</html>
