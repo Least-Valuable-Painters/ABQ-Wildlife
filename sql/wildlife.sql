@@ -3,9 +3,9 @@ DROP TABLE IF EXISTS favorite;
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS image;
 DROP TABLE IF EXISTS location;
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS `user`;
 
-CREATE TABLE user (
+CREATE TABLE `user` (
                          userId BINARY(16) NOT NULL,
                          userActivationToken CHAR(32),
                          userEmail VARCHAR(128) NOT NULL UNIQUE,
@@ -34,10 +34,10 @@ CREATE TABLE image (
                        imageCloudinaryId VARCHAR(255) NOT NULL,
                        imageDateCreated DATETIME(6) NOT NULL,
                        imageUrl CHAR(255) NOT NULL,
-                       INDEX(imageId),
                        INDEX(imageLocationId),
+                       INDEX(imageUserId),
                        FOREIGN KEY(imageLocationId) REFERENCES location(locationId),
-                       FOREIGN KEY(imageUserId) REFERENCES user(userId),
+                       FOREIGN KEY(imageUserId) REFERENCES `user`(userId),
                        PRIMARY KEY (imageId)
 );
 
@@ -47,15 +47,19 @@ CREATE TABLE comment (
                         commentUserId BINARY(16) NOT NULL,
                         commentContent VARCHAR(255),
                         commentDate DATETIME(6),
+                        INDEX(commentUserId),
+                        INDEX(commentImageId),
                         FOREIGN KEY(commentImageId) REFERENCES image(imageId),
-                        FOREIGN KEY(commentUserId) REFERENCES user(userId),
+                        FOREIGN KEY(commentUserId) REFERENCES `user`(userId),
                         PRIMARY KEY(commentId)
 );
 
 CREATE TABLE favorite (
                        favoriteLocationId BINARY(16) NOT NULL,
                        favoriteUserId BINARY(16) NOT NULL,
+                       INDEX(favoriteLocationId),
+                       INDEX(favoriteUserId),
                        FOREIGN KEY(favoriteLocationId) REFERENCES location(locationId),
-                       FOREIGN KEY(favoriteUserId) REFERENCES user(userId),
+                       FOREIGN KEY(favoriteUserId) REFERENCES `user`(userId),
                        PRIMARY KEY(favoriteLocationId, favoriteUserId)
 );
