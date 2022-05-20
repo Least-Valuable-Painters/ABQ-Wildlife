@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from "express";
 import {selectUserByUserActivationToken} from "../../utils/user/selectUserByUserActivationToken";
-import {User} from "../../utils/user/updateUser";
+import {User} from "../../utils/interfaces/User";
 import {updateUser} from "../../utils/interfaces/updateUser";
 import {Status} from "../../utils/interfaces/Status";
 
@@ -16,7 +16,7 @@ export async function activationController(request: Request, response: Response,
             message: "Account activation has failed. Has this account already been activated?"
         });
 
-        const activationSucceeded = async (User: user):Promise<Response> => {
+        const activationSucceeded = async (user: User):Promise<Response> => {
             const updatedUser = {...user, userActivationToken: null}
             console.log(updatedUser)
             await updateUser(updatedUser)
