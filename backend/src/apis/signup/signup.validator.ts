@@ -25,6 +25,6 @@ export const signupValidator: Schema= {
         escape: true
     },
     userIsAdmin: {
-
+        isBoolean: true
     }
 }
