@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS image;
 DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS `user`;
 
+
 CREATE TABLE `user` (
                          userId BINARY(16) NOT NULL,
                          userActivationToken CHAR(32),
