@@ -19,7 +19,7 @@ export async function activationController(request: Request, response: Response,
         const activationSucceeded = async (User: user):Promise<Response> => {
             const updatedUser = {...user, userActivationToken: null}
             console.log(updatedUser)
-            await updatedUser(updatedUser)
+            await updateUser(updatedUser)
             return response.json({
                 status: 200,
                 data: null,
@@ -32,7 +32,5 @@ export async function activationController(request: Request, response: Response,
     } catch (error: any) {
         return response.json({status: 500, data: null, message: error.message})
     }
-
-
 
 }

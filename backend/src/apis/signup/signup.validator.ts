@@ -1,7 +1,7 @@
 import {Schema} from 'express-validator';
 
 export const signupValidator: Schema= {
-    userAtHandle: {
+    userUsername: {
         escape: true,
         trim: true,
         isLength: {
