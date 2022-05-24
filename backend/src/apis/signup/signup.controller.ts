@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { setActivationToken, setHash } from '../../utils/auth.utils'
 import Mailgun from "mailgun.js";
 import Client from "mailgun.js/dist/lib/client";
-import {Status} from "../../utils/interfaces/Status";
+import {Comment} from "../../utils/interfaces/Comment";
 
 
 export async function signupUserController(request: Request, response: Response): Promise<Response | undefined> {
@@ -41,7 +41,7 @@ export async function signupUserController(request: Request, response: Response)
 
         await mailgunClient.messages.create(<string>process.env.MAILGUN_DOMAIN, mailgunMessage)
 
-        const status: Status = {
+        const status: Comment = {
             status: 200,
             message: 'User successfully created please check your email.',
             data: null
@@ -50,7 +50,7 @@ export async function signupUserController(request: Request, response: Response)
         return response.json(status)
 
     } catch (error: any) {
-        const status: Status = {
+        const status: Comment = {
             status: 500,
             message: error.message,
             data: null

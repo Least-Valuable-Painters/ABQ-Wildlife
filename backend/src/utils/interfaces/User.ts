@@ -1,5 +1,5 @@
 export interface partialUser {
-    userId: string|null,
+    userId: string,
     userUserName: string,
     userEmail: string,
     userHash: string,
@@ -7,10 +7,10 @@ export interface partialUser {
 }
 
 export interface User {
-    userId: string|null,
+    userId: string,
     userUserName: string,
     userEmail: string,
     userHash: string,
-    userIsAdmin: boolean
-
+    userIsAdmin: boolean,
+    userActivationToken: string
 }
