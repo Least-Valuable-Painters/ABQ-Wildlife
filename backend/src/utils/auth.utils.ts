@@ -26,7 +26,7 @@ export async function setHash (password: string): Promise<string> {
         {
             type: argon2.argon2id,
             memoryCost: 2 ** 16,
-            hashLength: 97
+            hashLength: 32
         })
 }
 
@@ -37,6 +37,6 @@ export async function validatePassword (hash: string, password: string): Promise
         {
             type: argon2.argon2id,
             memoryCost: 2 ** 16,
-            hashLength: 97
+            hashLength: 32
         })
 }

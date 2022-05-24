@@ -13,7 +13,7 @@ router.route('/')
 
 router.route('/activation/:activation')
     .get(
-        asyncValidatorController([param("activation", "invalid activation link").isHesadecimal().notEmpty()]),
+        asyncValidatorController([param("activation", "invalid activation link").isHexadecimal().notEmpty()]),
         activationController
     )
 
