@@ -1,5 +1,5 @@
 import {User} from "../interfaces/User";
-import {connect} from "../database.utils";
+import {connect} from "../database.util";
 
 export async function updateUser(user: User): Promise<string> {
     try {
