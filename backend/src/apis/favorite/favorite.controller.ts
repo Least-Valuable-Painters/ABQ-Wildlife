@@ -5,7 +5,8 @@ import {Favorite} from "../../utils/interfaces/Favorite";
 import {selectFavoriteByFavoriteId} from "../../utils/favorite/selectFavoriteByFavoriteId";
 import {deleteFavorite} from "../../utils/favorite/deleteFavorite";
 import {insertFavorite} from "../../utils/favorite/insertFavorite";
-import { Status } from 'cloudinary';
+import {Status} from "../../utils/interfaces/Status";
+
 
 
 export async function toggleFavoriteController(request: Request, response: Response): Promise<Response<string>> {
