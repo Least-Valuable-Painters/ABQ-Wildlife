@@ -1,8 +1,8 @@
 export interface Image {
-    imageId: string,
+    imageId: string|null,
     imageLocationId: string,
     imageUserId: string,
     imageCloudinaryId: string,
-    imageDateCreated: Date,
+    imageDateCreated: Date|null,
     imageUrl: string
 }

@@ -6,6 +6,7 @@ import {insertImage} from "../../utils/image/insertImage";
 import {selectAllImages} from "../../utils/image/selectAllImages";
 import {selectImageByImageId} from "../../utils/image/selectImageByImageId";
 import {selectImagesByImageUserId} from "../../utils/image/selectImagesByImageUserId";
+import {Status} from "../../utils/interfaces/Status";
 
 export async function getAllImagesController(request: Request, response: Response): Promise<Response | undefined> {
 
@@ -40,6 +41,10 @@ export async function getImagesByImageUserIdController(request : Request, respon
 }
 
 export async function getImagesByImageIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
+    async function selectImagesByImageId(imageId: string) {
+
+    }
+
     try {
         const {imageId} = request.params
         const data = await selectImagesByImageId(imageId)
@@ -56,17 +61,17 @@ export async function getImagesByImageIdController(request : Request, response: 
 export async function postImage(request: Request, response: Response) : Promise<Response<Status>> {
     try {
 
-        const {tweetContent} = request.body;
-        const profile : Profile = request.session.profile as Profile
-        const tweetProfileId : string = <string>profile.profileId
+        const {imageId} = request.body;
+        const user : User = request.session.user as User
+        const imageUserId : string = <string>user.userId
 
-        const tweet: Tweet = {
-            tweetId: null,
-            tweetProfileId,
-            tweetContent,
-            tweetDate: null
+        const image: Image = {
+            imageId: null,
+            imageLocationId: string,
+            imageUserId,
+            imageDateCreated: null
         }
-        const result = await insertTweet(tweet)
+        const result = await insertImage(image)
         const status: Status = {
             status: 200,
             message: result,
@@ -77,7 +82,7 @@ export async function postImage(request: Request, response: Response) : Promise<
     } catch(error) {
         return  response.json({
             status: 500,
-            message: "Error Creating tweet try again later.",
+            message: "Error Creating image try again later.",
             data: null
         });
     }
