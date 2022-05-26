@@ -13,7 +13,6 @@ export async function toggleFavoriteController(request: Request, response: Respo
 
     try {
         const {favoriteLocationId} = request.body;
-        // @ts-ignore
         const user = <User>request.session.user
         const favoriteUserId = <string>user.userId
 
