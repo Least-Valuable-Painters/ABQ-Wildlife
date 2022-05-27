@@ -5,6 +5,7 @@ import {User} from '../../utils/interfaces/User';
 import {insertLocation} from "../../utils/location/insertLocation";
 import {selectLocationByLocationId} from "../../utils/location/selectlocationBylocationId";
 import {Status} from "../../utils/interfaces/Status";
+import {selectAllLocations} from "../../utils/location/selectAllLocations";
 
 export async function getAllLocationsController(request: Request, response: Response): Promise<Response | undefined> {
 
@@ -59,17 +60,17 @@ export async function getLocationsByLocationIdController(request : Request, resp
 export async function postLocation(request: Request, response: Response) : Promise<Response<Status>> {
     try {
 
-        const {locationId} = request.body;
-        const user : User = request.session.user as User
-        const locationUserId : string = <string>user.userId
+
+        const {locationDescription, locationLat, locationLng, locationName} = request.body;
+
 
         const location: Location = {
-            locationId: string|null,
-            locationDateCreated: Date|null,
-            locationDescription: string,
-            locationLat: number,
-            locationLng: number,
-            locationName: string,
+            locationId: null,
+            locationDateCreated: null,
+            locationDescription,
+            locationLat,
+            locationLng,
+            locationName
             }
         const result = await insertLocation(location)
         const status: Status = {

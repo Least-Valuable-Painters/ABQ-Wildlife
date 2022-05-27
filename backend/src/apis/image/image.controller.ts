@@ -61,7 +61,7 @@ export async function getImagesByImageIdController(request : Request, response: 
 export async function postImage(request: Request, response: Response) : Promise<Response<Status>> {
     try {
 
-        const {imageId} = request.body;
+        const {imageCloudinaryId, imageDateCreated, imageUrl} = request.body;
         const user : User = request.session.user as User
         const imageUserId : string = <string>user.userId
 
@@ -69,9 +69,9 @@ export async function postImage(request: Request, response: Response) : Promise<
             imageId: null,
             imageLocationId: null,
             imageUserId,
-            imageCloudinaryId: null,
-            imageDateCreated: null,
-            imageUrl: null
+            imageCloudinaryId,
+            imageDateCreated,
+            imageUrl
         }
         const result = await insertImage(image)
         const status: Status = {
