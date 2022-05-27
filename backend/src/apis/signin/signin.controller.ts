@@ -1,4 +1,7 @@
 import { NextFunction , Request, Response } from 'express'
+import {User} from "../../utils/interfaces/User";
+import {selectUserByUserEmail} from "../../utils/user/selectUserByUserEmail";
+import {generateJwt, validatePassword} from "../../utils/auth.utils";
 
 
 
@@ -9,7 +12,7 @@ export async function signInController(request: Request, response: Response): Pr
     const isEmailValid: boolean = mySqlResult ? true : false
 
     try {
-        const authenticate = async () => {
+        const authenticate: () => Promise<any> = async () => {
 
             const {userPassword} = request.body;
 
@@ -25,7 +28,7 @@ export async function signInController(request: Request, response: Response): Pr
                 userName
             }
 
-            const signature: string = uuid();
+            const signature: string = UUID();
             const authorization: string = generateJwt({
                 userId,
                 userEmail,
@@ -64,9 +67,7 @@ export async function signInController(request: Request, response: Response): Pr
                 message: "Invalid email or password."
             })
 
-        }
-    catch
-        (error: any)
+        } catch (error)
         {
             return response.json({status: 500, data: null, message: error.message})
         }

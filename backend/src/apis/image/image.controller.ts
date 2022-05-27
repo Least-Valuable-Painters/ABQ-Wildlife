@@ -67,9 +67,11 @@ export async function postImage(request: Request, response: Response) : Promise<
 
         const image: Image = {
             imageId: null,
-            imageLocationId: string,
+            imageLocationId: null,
             imageUserId,
-            imageDateCreated: null
+            imageCloudinaryId: null,
+            imageDateCreated: null,
+            imageUrl: null
         }
         const result = await insertImage(image)
         const status: Status = {
