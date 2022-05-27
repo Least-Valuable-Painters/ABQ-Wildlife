@@ -8,9 +8,10 @@ export interface partialUser {
 
 export interface User {
     userId: string|null,
-    userUserName: string,
+    userActivationToken: string|null,
     userEmail: string,
     userHash: string,
     userIsAdmin: boolean,
-    userActivationToken: string
+    userName: string,
+
 }

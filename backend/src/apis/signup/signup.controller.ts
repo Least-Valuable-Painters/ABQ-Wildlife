@@ -3,7 +3,6 @@ import { Request, Response } from 'express'
 import { setActivationToken, setHash } from '../../utils/auth.utils'
 import Mailgun from "mailgun.js";
 import Client from "mailgun.js/dist/lib/client";
-import {Comment} from "../../utils/interfaces/Comment";
 import formData from 'form-data';
 import {User} from "../../utils/interfaces/User";
 import {insertUser} from "../../utils/user/insertUser";
@@ -15,7 +14,7 @@ export async function signupUserController(request: Request, response: Response)
 
         const mailgun: Mailgun = new Mailgun(formData)
         const mailgunClient: Client = mailgun.client({username: "api", key: <string>process.env.MAILGUN_API_KEY})
-        const {userAtHandle, userEmail, userPhone, userPassword} = request.body;
+        const {userEmail, userName, userPassword} = request.body;
         const userHash = await setHash(userPassword)
         const userActivationToken = setActivationToken()
         const basePath = `${request.protocol}://${request.get('host')}${request.originalUrl}activation/${userActivationToken}`
@@ -37,7 +36,7 @@ export async function signupUserController(request: Request, response: Response)
             userActivationToken,
             userEmail,
             userHash,
-            userIsAdmin: ,
+            userIsAdmin: false,
             userName,
         };
         await insertUser(user)
@@ -53,7 +52,7 @@ export async function signupUserController(request: Request, response: Response)
         return response.json(status)
 
     } catch (error: any) {
-        const status: Comment = {
+        const status: Status = {
             status: 500,
             message: error.message,
             data: null

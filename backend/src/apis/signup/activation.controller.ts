@@ -1,13 +1,13 @@
 import {NextFunction, Request, Response} from "express";
 import {selectUserByUserActivationToken} from "../../utils/user/selectUserByUserActivationToken";
 import {User} from "../../utils/interfaces/User";
-import {updateUser} from "../../utils/interfaces/updateUser";
+import {updateUser} from "../../utils/user/updateUser";
 import {Comment} from "../../utils/interfaces/Comment";
 
 export async function activationController(request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Comment>> {
     try {
         const {activation} = request.params
-        const user = await selectUserbyUserActivationToken(activation)
+        const user = await selectUserByUserActivationToken(activation)
         console.log(user)
 
         const activationFailed = () : Response => response.json({
