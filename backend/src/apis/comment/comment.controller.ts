@@ -1,12 +1,13 @@
 import {Request, Response, NextFunction} from 'express';
 
 // Interfaces (represent the DB model and types of the columns associated with a specific DB table)
-import {Comment} from '../../util/interfaces/Comment';
-import {User} from "../../util/interfaces/User";
-import {insertComment from "../../util/comment/insertComment"
-import {selectAllComments} from "../../util/comment/selectAllComments";
-import {selectCommentByCommentUserId} from "../../util/comment/selectCommentByCommentUserId";
-import {selectCommentByCommentId} from '../../util/comment/selectCommentByCommentId';
+import {Comment} from '../../utils/interfaces/Comment';
+import {User} from "../../utils/interfaces/User";
+import {insertComment} from "../../utils/comment/insertComment";
+import {selectAllComments} from "../../utils/comment/selectAllComments";
+import {selectCommentByCommentUserId} from "../../utils/comment/selectCommentByCommentUserId";
+import {selectCommentByCommentId} from '../../utils/comment/selectCommentByCommentId';
+import {Status} from "../../utils/interfaces/Status";
 
 export async function getAllCommentsController(request: Request, response: Response): Promise<Response<Status>> {
 
@@ -26,8 +27,8 @@ export async function getAllCommentsController(request: Request, response: Respo
 
 export async function getCommentsByCommentProfileIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
     try {
-        const     {tweetProfileId} = request.params
-        const data  = await selectTweetsByTweetProfileId(tweetProfileId)
+        const     {commentProfileId} = request.params
+        const data  = await selectCommentByCommentUserId(commentProfileId)
         return response.json({status:200, message: null, data});
     } catch(error) {
         return response.json({
@@ -38,10 +39,10 @@ export async function getCommentsByCommentProfileIdController(request : Request,
     }
 }
 
-export async function getTweetByTweetIdController(request : Request, response: Response, nextFunction: NextFunction) : Promise<Response<Status>>{
+export async function getCommentByCommentIdController(request : Request, response: Response, nextFunction: NextFunction) : Promise<Response<Status>>{
     try {
-        const     {tweetId} = request.params
-        const data  = await selectTweetByTweetId(tweetId)
+        const     {commentId} = request.params
+        const data  = await selectCommentByCommentId(commentId)
         return response.json({status:200, message: null, data});
     } catch(error) {
         return response.json({
@@ -52,20 +53,21 @@ export async function getTweetByTweetIdController(request : Request, response: R
     }
 }
 
-export async function postTweet(request: Request, response: Response) : Promise<Response<Status>> {
+export async function postComment(request: Request, response: Response) : Promise<Response<Status>> {
     try {
 
-        const {tweetContent} = request.body;
-        const profile : Profile = request.session.profile as Profile
-        const tweetProfileId : string = <string>profile.profileId
+        const {commentContent, commentImageId} = request.body;
+        const user : User = request.session.user as User
+        const commentUserId : string = <string>user.userId
 
-        const tweet: Tweet = {
-            tweetId: null,
-            tweetProfileId,
-            tweetContent,
-            tweetDate: null
+        const comment: Comment = {
+            commentId: null,
+            commentImageId,
+            commentUserId,
+            commentContent,
+            commentDate: null
         }
-        const result = await insertTweet(tweet)
+        const result = await insertComment(comment)
         const status: Status = {
             status: 200,
             message: result,
@@ -76,7 +78,7 @@ export async function postTweet(request: Request, response: Response) : Promise<
     } catch(error) {
         return  response.json({
             status: 500,
-            message: "Error Creating tweet try again later.",
+            message: "Error Creating comment try again later.",
             data: null
         });
     }

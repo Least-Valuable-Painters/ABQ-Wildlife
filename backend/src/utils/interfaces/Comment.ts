@@ -1,8 +1,8 @@
 export interface Comment {
-    commentId: string,
+    commentId: string|null,
     commentImageId: string,
     commentUserId: string,
     commentContent: string,
-    commentDate: Date
+    commentDate: Date|null;
 }
 

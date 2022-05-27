@@ -4,6 +4,10 @@ import { setActivationToken, setHash } from '../../utils/auth.utils'
 import Mailgun from "mailgun.js";
 import Client from "mailgun.js/dist/lib/client";
 import {Comment} from "../../utils/interfaces/Comment";
+import formData from 'form-data';
+import {User} from "../../utils/interfaces/User";
+import {insertUser} from "../../utils/user/insertUser";
+import {Status} from "../../utils/interfaces/Status";
 
 
 export async function signupUserController(request: Request, response: Response): Promise<Response | undefined> {
@@ -11,10 +15,9 @@ export async function signupUserController(request: Request, response: Response)
 
         const mailgun: Mailgun = new Mailgun(formData)
         const mailgunClient: Client = mailgun.client({username: "api", key: <string>process.env.MAILGUN_API_KEY})
-        const {userAtHandle, usereEmail, userPhone, userPassword} = request.body;
+        const {userAtHandle, userEmail, userPhone, userPassword} = request.body;
         const userHash = await setHash(userPassword)
         const userActivationToken = setActivationToken()
-        const userAvatarUrl = 'http://www.fillmurray.com/100/150'
         const basePath = `${request.protocol}://${request.get('host')}${request.originalUrl}activation/${userActivationToken}`
         console.log(userActivationToken)
 
@@ -34,14 +37,14 @@ export async function signupUserController(request: Request, response: Response)
             userActivationToken,
             userEmail,
             userHash,
-            userIsAdmin,
+            userIsAdmin: ,
             userName,
         };
         await insertUser(user)
 
         await mailgunClient.messages.create(<string>process.env.MAILGUN_DOMAIN, mailgunMessage)
 
-        const status: Comment = {
+        const status: Status = {
             status: 200,
             message: 'User successfully created please check your email.',
             data: null

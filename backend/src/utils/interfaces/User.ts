@@ -7,7 +7,7 @@ export interface partialUser {
 }
 
 export interface User {
-    userId: string,
+    userId: string|null,
     userUserName: string,
     userEmail: string,
     userHash: string,
