@@ -2,6 +2,7 @@ import { NextFunction , Request, Response } from 'express'
 import {User} from "../../utils/interfaces/User";
 import {selectUserByUserEmail} from "../../utils/user/selectUserByUserEmail";
 import {generateJwt, validatePassword} from "../../utils/auth.utils";
+import uuid from "uuid";
 
 
 
@@ -17,7 +18,7 @@ export async function signInController(request: Request, response: Response): Pr
             const {userPassword} = request.body;
 
             // @ts-ignore isEmailValid determines mySqlResult will not be null
-            const {userId, userActivationToken, userEmail, userHash, userIsAdmin, userName} = mySqlResult
+            const {userId, userActivationToken, userEmail, userHash, userIsAdmin, userUserName} = mySqlResult
 
             const user: User = {
                 userId,
@@ -25,10 +26,11 @@ export async function signInController(request: Request, response: Response): Pr
                 userEmail,
                 userHash,
                 userIsAdmin,
-                userName
+                userUserName
             }
 
-            const signature: string = UUID();
+            // @ts-ignore
+            const signature: string = uuid();
             const authorization: string = generateJwt({
                 userId,
                 userEmail,
@@ -56,7 +58,10 @@ export async function signInController(request: Request, response: Response): Pr
                     authorization
                 });
 
-                const isPasswordValid: boolean = user && await validatePassword(user.userHash, userPassword);
+                return response.json({status: 200, data: null, message: "sign in successful"})
+            };
+
+            const isPasswordValid: boolean = user && await validatePassword(user.userHash, userPassword);
 
                 return isPasswordValid ? signInSuccessful() : signInFailed("Invalid email or password. Please try again.");
             }
@@ -67,9 +72,10 @@ export async function signInController(request: Request, response: Response): Pr
                 message: "Invalid email or password."
             })
 
-        } catch (error)
+        }
+    catch
+        (error: any)
         {
             return response.json({status: 500, data: null, message: error.message})
         }
     }
-}

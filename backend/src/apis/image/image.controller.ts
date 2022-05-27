@@ -7,6 +7,7 @@ import {selectAllImages} from "../../utils/image/selectAllImages";
 import {selectImageByImageId} from "../../utils/image/selectImageByImageId";
 import {selectImagesByImageUserId} from "../../utils/image/selectImagesByImageUserId";
 import {Status} from "../../utils/interfaces/Status";
+import {uploadToCloudinary} from "../../utils/cloudinary.utils";
 
 export async function getAllImagesController(request: Request, response: Response): Promise<Response | undefined> {
 
@@ -61,25 +62,35 @@ export async function getImagesByImageIdController(request : Request, response: 
 export async function postImage(request: Request, response: Response) : Promise<Response<Status>> {
     try {
 
-        const {imageCloudinaryId, imageDateCreated, imageUrl} = request.body;
-        const user : User = request.session.user as User
-        const imageUserId : string = <string>user.userId
-
-        const image: Image = {
-            imageId: null,
-            imageLocationId: null,
-            imageUserId,
-            imageCloudinaryId,
-            imageDateCreated,
-            imageUrl
-        }
-        const result = await insertImage(image)
+        const message : string = await uploadToCloudinary(request)
         const status: Status = {
             status: 200,
-            message: result,
+            message: message,
             data: null
         };
+        console.log(message)
         return response.json(status);
+
+        // const {imageCloudinaryId, imageUrl} = message;
+        // const {imageLocationId} = request.body;
+        // const user : User = request.session.user as User
+        // const imageUserId : string = <string>user.userId
+        //
+        // const image: Image = {
+        //     imageId: null,
+        //     imageLocationId,
+        //     imageUserId,
+        //     imageCloudinaryId,
+        //     imageDateCreated: null,
+        //     imageUrl
+        // }
+        // const result = await insertImage(image)
+        // const status: Status = {
+        //     status: 200,
+        //     message: result,
+        //     data: null
+        // };
+        // return response.json(status);
 
     } catch(error) {
         return  response.json({

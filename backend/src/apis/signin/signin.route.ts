@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { asyncValidatorController } from '../../utils/controllers/asyncValidator.controller'
-import { signInValidator } from './sign-in.validator'
-import { signInController } from "./sign-in.controller"
+import { signInValidator } from './signin.validator'
+import { signInController } from "./signin.controller"
 import { checkSchema} from "express-validator";
 
 export const SigninRoute: Router = Router()

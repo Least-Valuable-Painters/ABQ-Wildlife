@@ -15,7 +15,7 @@ export async function signupUserController(request: Request, response: Response)
 
         const mailgun: Mailgun = new Mailgun(formData)
         const mailgunClient: Client = mailgun.client({username: "api", key: <string>process.env.MAILGUN_API_KEY})
-        const {userAtHandle, userEmail, userPhone, userPassword} = request.body;
+        const {userIsAdmin, userEmail, userUserName, userPassword} = request.body;
         const userHash = await setHash(userPassword)
         const userActivationToken = setActivationToken()
         const basePath = `${request.protocol}://${request.get('host')}${request.originalUrl}activation/${userActivationToken}`
@@ -37,8 +37,8 @@ export async function signupUserController(request: Request, response: Response)
             userActivationToken,
             userEmail,
             userHash,
-            userIsAdmin: ,
-            userName,
+            userIsAdmin,
+            userUserName,
         };
         await insertUser(user)
 
@@ -53,7 +53,7 @@ export async function signupUserController(request: Request, response: Response)
         return response.json(status)
 
     } catch (error: any) {
-        const status: Comment = {
+        const status: Status = {
             status: 500,
             message: error.message,
             data: null
