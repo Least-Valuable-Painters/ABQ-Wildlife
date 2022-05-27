@@ -1,13 +1,13 @@
 
 import express, { Application } from 'express'
 import morgan from 'morgan'
-import SignupRoute from './apis/sign-up/signup.route'
+import SignupRoute from './apis/signup/signup.route'
 
 // Routes
 import { indexRoute } from './apis/index.route'
-import { SignInRoute } from './apis/sign-in/sign-in.route'
+import { SigninRoute } from './apis/signin/signin.route'
 const session = require("express-session")
-import { SignOutRoute } from './apis/sign-out/sign-out.route'
+import { SignoutRoute } from './apis/signout/signout.route'
 const MemoryStore = require('memorystore')(session)
 
 // The following class creates the app and instantiates the server
@@ -50,8 +50,8 @@ export class App {
         // TODO add "/apis"
         this.app.use('/apis', indexRoute)
         this.app.use('/apis/sign-up', SignupRoute)
-        this.app.use('/apis/sign-in', SignInRoute)
-        this.app.use('/apis/sign-out', SignOutRoute)
+        this.app.use('/apis/sign-in', SigninRoute)
+        this.app.use('/apis/sign-out', SignoutRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
