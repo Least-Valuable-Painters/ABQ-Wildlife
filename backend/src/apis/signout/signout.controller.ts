@@ -1,9 +1,9 @@
-import { Comment } from '../../utils/interfaces/Comment'
 import { Request, Response } from 'express'
+import {Status} from "../../utils/interfaces/Status";
 
 
 export function signOutController (request: Request, response: Response): Response<Comment> {
-    const status: Comment = { status: 200, message: 'sign out successful', data:null }
+    const status: Status = { status: 200, message: 'sign out successful', data:null }
     const {session} = request
     session?.destroy(() => {})
     return response.json(status)
