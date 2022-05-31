@@ -18,7 +18,7 @@ export async function signInController(request: Request, response: Response): Pr
             const {userPassword} = request.body;
 
             // @ts-ignore isEmailValid determines mySqlResult will not be null
-            const {userId, userActivationToken, userEmail, userHash, userIsAdmin, userUserName} = mySqlResult
+            const {userId, userActivationToken, userEmail, userHash, userIsAdmin, userName} = mySqlResult
 
             const user: User = {
                 userId,
@@ -26,7 +26,7 @@ export async function signInController(request: Request, response: Response): Pr
                 userEmail,
                 userHash,
                 userIsAdmin,
-                userUserName
+                userName
             }
 
             // @ts-ignore

@@ -5,8 +5,8 @@ export const signupValidator: Schema= {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'userAtHandle must be between 1 and 128 characters',
-            options: {min:1, max: 32}
+            errorMessage: 'username must be between 1 and 128 characters',
+            options: {min:1, max: 128}
         }
     },
     userEmail: {
