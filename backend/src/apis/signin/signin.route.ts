@@ -4,7 +4,7 @@ import { signInValidator } from './signin.validator'
 import { signInController } from "./signin.controller"
 import { checkSchema} from "express-validator";
 
-export const SigninRoute: Router = Router()
+export const SignInRoute: Router = Router()
 
-SigninRoute.route('/')
+SignInRoute.route('/')
     .post(asyncValidatorController(checkSchema(signInValidator)), signInController)

@@ -5,7 +5,7 @@ import {RowDataPacket} from "mysql2";
 export async function selectUserByUserEmail(userEmail: string): Promise<User|null> {
     try {
         const mysqlConnection = await connect();
-        const sqlQuery: string = "SELECT BIN_TO_UUID(userId) as userId, userActivationToken, userName, userEmail, userHash, userIsAdmin FROM user WHERE userEmail = :userEmail"
+        const sqlQuery: string = "SELECT BIN_TO_UUID(userId) as userId, userActivationToken, userEmail, userHash, userIsAdmin, userName FROM user WHERE userEmail = :userEmail"
         const result = await mysqlConnection.execute(sqlQuery, {userEmail}) as RowDataPacket[]
         const rows: User[] = result[0] as User[]
         return rows.length === 1 ? {...rows[0]} : null;
