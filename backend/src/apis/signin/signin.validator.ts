@@ -1,4 +1,4 @@
-import {Schema} from 'express'
+import {Schema} from 'express-validator'
 
 export const signInValidator : Schema = {
     userPassword: {
@@ -17,4 +17,4 @@ export const signInValidator : Schema = {
         // normalizeEmail: true,
         trim: true
     }
-},
+}
