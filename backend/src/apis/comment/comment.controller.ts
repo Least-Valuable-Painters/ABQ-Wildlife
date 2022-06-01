@@ -27,7 +27,7 @@ export async function getAllCommentsController(request: Request, response: Respo
 
 export async function getCommentsByCommentProfileIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
     try {
-        const     {commentProfileId} = request.params
+        const {commentProfileId} = request.params
         const data  = await selectCommentByCommentUserId(commentProfileId)
         return response.json({status:200, message: null, data});
     } catch(error) {
@@ -41,7 +41,7 @@ export async function getCommentsByCommentProfileIdController(request : Request,
 
 export async function getCommentByCommentIdController(request : Request, response: Response, nextFunction: NextFunction) : Promise<Response<Status>>{
     try {
-        const     {commentId} = request.params
+        const {commentId} = request.params
         const data  = await selectCommentByCommentId(commentId)
         return response.json({status:200, message: null, data});
     } catch(error) {
