@@ -10,6 +10,7 @@ import { imageValidator } from './image.validator';
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
 import {check} from "express-validator";
 import {checkSchema} from "express-validator";
+import { imageUploader } from '../../utils/controllers/multer.controller'
 
 const router = Router();
 router.route("/:imageId").get(asyncValidatorController([
@@ -22,6 +23,6 @@ router.route("/imageUserId/:imageUserId").get( asyncValidatorController([
 
 router.route('/')
     .get( getAllImagesController)
-    .post(isLoggedIn, asyncValidatorController(checkSchema(imageValidator)), postImage);
+    .post(isLoggedIn, imageUploader, asyncValidatorController(checkSchema(imageValidator)), postImage);
 
-export default router;
+

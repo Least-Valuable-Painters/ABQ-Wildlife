@@ -1,10 +1,5 @@
 import { NextFunction , Request, Response } from 'express';
-
-import {Image} from '../../utils/interfaces/Image';
-import {User} from '../../utils/interfaces/User';
-import {insertImage} from "../../utils/image/insertImage";
 import {selectAllImages} from "../../utils/image/selectAllImages";
-import {selectImageByImageId} from "../../utils/image/selectImageByImageId";
 import {selectImagesByImageUserId} from "../../utils/image/selectImagesByImageUserId";
 import {Status} from "../../utils/interfaces/Status";
 import {uploadToCloudinary} from "../../utils/cloudinary.utils";
@@ -99,6 +94,18 @@ export async function postImage(request: Request, response: Response) : Promise<
             data: null
         });
     }
+}
+
+export async function imageUploadController (request: Request, response: Response): Promise<Response> {
+    try {
+        if (request.file === undefined) {
+            throw new Error('Please provide a valid file type')
+        }
+        const message: string = await uploadToCloudinary(request.file)
+        return response.json({ status: 200, data: null, message: message})
+    }   catch (error: any) {
+        return response.json({ status: 400, message: error.message, data: null})
+        }
 }
 
 
