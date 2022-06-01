@@ -1,6 +1,6 @@
 import { Request } from 'express'
 import {v2 as cloudinaryUtils, UploadStream} from 'cloudinary'
-let streamifier = require('streamifier');
+
 
 
 /**
