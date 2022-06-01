@@ -1,12 +1,12 @@
 import {Schema} from 'express-validator';
 
 export const commentValidator : Schema = {
-    tweetProfileId: {
+    commentUserId: {
         isUUID: {
             errorMessage: 'please provide a valid CommentProfileId'
         }
     },
-    tweetContent: {
+    commentContent: {
         isLength: {
             errorMessage: 'a comment cannot be longer than 420 characters',
             options: { max: 420 }
@@ -14,7 +14,7 @@ export const commentValidator : Schema = {
         trim: true,
         escape: true
     },
-    tweetDate: {
+    commentDate: {
         toDate: true
     }
 };

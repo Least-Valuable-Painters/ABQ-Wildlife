@@ -3,7 +3,7 @@ import {
     getAllImagesController,
     getImagesByImageIdController,
     getImagesByImageUserIdController,
-    postImage
+    postImage, uploadImageController
 } from "./image.controller";
 import { asyncValidatorController} from "../../utils/controllers/asyncValidator.controller";
 import { imageValidator } from './image.validator';
@@ -23,6 +23,9 @@ router.route("/imageUserId/:imageUserId").get( asyncValidatorController([
 
 router.route('/')
     .get( getAllImagesController)
-    .post(isLoggedIn, imageUploader, asyncValidatorController(checkSchema(imageValidator)), postImage);
+    .post(isLoggedIn, asyncValidatorController(checkSchema(imageValidator)), postImage);
 
+router.route('/upload')
+    .post(isLoggedIn, imageUploader, uploadImageController)
 
+export default router;

@@ -51,9 +51,9 @@ export class App {
     private routes () {
         // TODO add "/apis"
         this.app.use('/apis', indexRoute)
-        this.app.use('/apis/sign-up', SignupRoute)
-        this.app.use('/apis/sign-in', SigninRoute)
-        this.app.use('/apis/sign-out', SignoutRoute)
+        this.app.use('/apis/signup', SignupRoute)
+        this.app.use('/apis/signin', SigninRoute)
+        this.app.use('/apis/signout', SignoutRoute)
         this.app.use('/apis/location', locationRoute)
         this.app.use('/apis/image', imageRoute)
     }
