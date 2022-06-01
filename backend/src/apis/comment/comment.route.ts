@@ -12,8 +12,8 @@ import {check} from 'express-validator';
 import {checkSchema} from 'express-validator';
 
 const router = Router();
-router.route("/:tweetId").get(  asyncValidatorController([
-    check("tweetId", "please provide a valid tweetId").isUUID()
+router.route("/:commentId").get(  asyncValidatorController([
+    check("commentId", "please provide a valid commentId").isUUID()
 ]), getCommentByCommentIdController)
 
 
