@@ -1,6 +1,5 @@
-import {Comment} from "../interfaces/comment";
+import {Comment} from "../interfaces/Comment";
 import {connect} from "../database.util";
-import {User} from "../interfaces/User";
 import {RowDataPacket,} from "mysql2"
 
 export async function selectAllComments() : Promise<Comment[]> {

@@ -3,7 +3,6 @@ import { Request, Response } from 'express'
 import { setActivationToken, setHash } from '../../utils/auth.utils'
 import Mailgun from "mailgun.js";
 import Client from "mailgun.js/dist/lib/client";
-import {Comment} from "../../utils/interfaces/Comment";
 import formData from 'form-data';
 import {User} from "../../utils/interfaces/User";
 import {insertUser} from "../../utils/user/insertUser";
@@ -34,11 +33,11 @@ export async function signupUserController(request: Request, response: Response)
 
         const user: User = {
             userId: null,
-            userActivationToken,
+            userName,
             userEmail,
             userHash,
             userIsAdmin,
-            userName,
+            userActivationToken,
         };
         await insertUser(user)
 
@@ -61,7 +60,6 @@ export async function signupUserController(request: Request, response: Response)
 
         return response.json(status)
     }
-    ;
 
 }
 

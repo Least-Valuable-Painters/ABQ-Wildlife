@@ -25,10 +25,10 @@ export async function getAllCommentsController(request: Request, response: Respo
     }
 }
 
-export async function getCommentsByCommentProfileIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
+export async function getCommentsByCommentUserIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
     try {
-        const {commentProfileId} = request.params
-        const data  = await selectCommentByCommentUserId(commentProfileId)
+        const {commentUserId} = request.params
+        const data  = await selectCommentByCommentUserId(commentUserId)
         return response.json({status:200, message: null, data});
     } catch(error) {
         return response.json({
