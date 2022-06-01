@@ -3,7 +3,7 @@ import {Schema} from 'express-validator';
 export const commentValidator : Schema = {
     commentUserId: {
         isUUID: {
-            errorMessage: 'please provide a valid CommentProfileId'
+            errorMessage: 'please provide a valid CommentUserId'
         }
     },
     commentContent: {
