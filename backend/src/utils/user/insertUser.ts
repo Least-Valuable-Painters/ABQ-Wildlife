@@ -7,7 +7,7 @@ export async function insertUser(user: User) : Promise<string> {
         const mysqlConnection = await connect();
         const query : string = 'INSERT INTO user(userId, userActivationToken, userName, userEmail, userHash, userIsAdmin) VALUES (UUID_TO_BIN(UUID()), :userActivationToken, :userName, :userEmail, :userHash, :userIsAdmin)';
         await mysqlConnection.execute(query, user);
-        await mysqlConnection.end()
+        await mysqlConnection.release()
         return 'User account successfully created.'
     }catch (error) {
         throw error
