@@ -21,21 +21,22 @@ export async function toggleFavoriteController(request: Request, response: Respo
             favoriteLocationId
         }
         const select = await selectFavoriteByFavoriteId(favorite)
-
+        let result = null
         // @ts-ignore
-        if (select[0]){
-            const result = await deleteFavorite(favorite)
+        if (select === null){
+            result = await insertFavorite(favorite)
         }else{
-            const result = await insertFavorite(favorite)
+            result = await deleteFavorite(favorite)
         }
 
         const status: Status = {
             status: 200,
-            message: 'Favorite successfully updated',
+            message: result,
             data: null
         };
         return response.json(status);
     } catch (error: any) {
+        console.error(error)
         return(response.json({status: 500, data: null, message: error.message}))
     }
 }
