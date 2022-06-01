@@ -3,9 +3,9 @@ import { NextFunction , Request, Response } from 'express';
 import {Location} from '../../utils/interfaces/Location';
 import {User} from '../../utils/interfaces/User';
 import {insertLocation} from "../../utils/location/insertLocation";
-import {selectLocationByLocationId} from "../../utils/location/selectlocationBylocationId";
 import {Status} from "../../utils/interfaces/Status";
 import {selectAllLocations} from "../../utils/location/selectAllLocations";
+import {selectLocationByLocationId} from "../../utils/location/selectLocationByLocationId";
 
 export async function getAllLocationsController(request: Request, response: Response): Promise<Response | undefined> {
 

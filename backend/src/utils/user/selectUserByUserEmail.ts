@@ -3,6 +3,7 @@ import {User} from "../interfaces/User";
 import {RowDataPacket} from "mysql2";
 
 export async function selectUserByUserEmail(userEmail: string): Promise<User|null> {
+    console.log(userEmail)
     try {
         const mysqlConnection = await connect();
         const sqlQuery: string = "SELECT BIN_TO_UUID(userId) as userId, userActivationToken, userEmail, userHash, userIsAdmin, userName FROM user WHERE userEmail = :userEmail"
