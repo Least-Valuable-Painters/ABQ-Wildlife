@@ -8,7 +8,7 @@ export async function insertComment(comment: Comment) : Promise<string> {
         const mySqlQuery = "INSERT INTO comment(commentId, commentImageId, commentUserId, commentContent, commentDate) VALUES(UUID_TO_BIN(UUID()), UUID_TO_BIN(:commentImageId), UUID_TO_BIN(:commentUserId), commentContent, NOW())";
 
         const [result]= await mySqlConnection.execute(mySqlQuery, comment) as [ResultSetHeader, RowDataPacket]
-        return "Tweet created successfully"
+        return "Comment created successfully"
     } catch (error) {
         throw error
     }
