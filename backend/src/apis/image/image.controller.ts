@@ -3,7 +3,9 @@ import {selectAllImages} from "../../utils/image/selectAllImages";
 import {selectImagesByImageUserId} from "../../utils/image/selectImagesByImageUserId";
 import {Status} from "../../utils/interfaces/Status";
 import {uploadToCloudinary} from "../../utils/cloudinary.utils";
-
+import {insertImage} from "../../utils/image/insertImage";
+import {Image} from "../../utils/interfaces/Image"
+import {User} from "../../utils/interfaces/User";
 export async function getAllImagesController(request: Request, response: Response): Promise<Response | undefined> {
 
     try {
@@ -57,7 +59,43 @@ export async function getImagesByImageIdController(request : Request, response: 
 export async function postImage(request: Request, response: Response) : Promise<Response<Status>> {
     try {
 
-        const message : string = await uploadToCloudinary(request)
+        const {imageLocationId, imageCloudinaryId, imageUrl} = request.body;
+        const user : User = request.session.user as User
+        const imageUserId : string = <string>user.userId
+
+        const image: Image = {
+            imageId: null,
+            imageLocationId,
+            imageUserId,
+            imageCloudinaryId,
+            imageDateCreated: null,
+            imageUrl
+        }
+        const result = await insertImage(image)
+        const status: Status = {
+            status: 200,
+            message: result,
+            data: null
+        };
+        return response.json(status);
+
+    } catch(error:any) {
+        return  response.json({
+            status: 500,
+            message: error.message,
+            data: null
+        });
+    }
+}
+
+
+export async function uploadImageController(request: Request, response: Response) : Promise<Response<Status>> {
+    try {
+        if (request.file === undefined) {
+            throw new Error('Please provide a valid file type')
+        }
+        // @ts-ignore
+        const message : string = await uploadToCloudinary(request.file)
         const status: Status = {
             status: 200,
             message: message,
@@ -66,46 +104,13 @@ export async function postImage(request: Request, response: Response) : Promise<
         console.log(message)
         return response.json(status);
 
-        // const {imageCloudinaryId, imageUrl} = message;
-        // const {imageLocationId} = request.body;
-        // const user : User = request.session.user as User
-        // const imageUserId : string = <string>user.userId
-        //
-        // const image: Image = {
-        //     imageId: null,
-        //     imageLocationId,
-        //     imageUserId,
-        //     imageCloudinaryId,
-        //     imageDateCreated: null,
-        //     imageUrl
-        // }
-        // const result = await insertImage(image)
-        // const status: Status = {
-        //     status: 200,
-        //     message: result,
-        //     data: null
-        // };
-        // return response.json(status);
 
-    } catch(error) {
+    } catch(error:any) {
         return  response.json({
             status: 500,
-            message: "Error Creating image try again later.",
+            message: error.message,
             data: null
         });
     }
 }
-
-export async function imageUploadController (request: Request, response: Response): Promise<Response> {
-    try {
-        if (request.file === undefined) {
-            throw new Error('Please provide a valid file type')
-        }
-        const message: string = await uploadToCloudinary(request.file)
-        return response.json({ status: 200, data: null, message: message})
-    }   catch (error: any) {
-        return response.json({ status: 400, message: error.message, data: null})
-        }
-}
-
 
