@@ -2,12 +2,12 @@ import {Schema} from 'express-validator';
 
 export const signupValidator: Schema= {
     userName: {
-        escape: true,
-        trim: true,
         isLength: {
             errorMessage: 'username must be between 1 and 128 characters',
             options: {min:1, max: 128}
-        }
+        },
+        trim: true,
+        escape: true,
     },
     userEmail: {
         isEmail: {
