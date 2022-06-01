@@ -1,19 +1,19 @@
 import {NextFunction, Request, Response} from 'express';
 import {verify, VerifyErrors} from 'jsonwebtoken';
 import {Status} from '../interfaces/Status';
-import {Profile} from '../interfaces/Profile';
+import {User} from '../interfaces/User';
 import {IncomingHttpHeaders} from 'http';
 
 export function isLoggedIn(request: Request, response: Response, next: NextFunction): Response | void {
 
     let status: Status = {status: 400, message: 'Please login', data: null};
 
-    const sessionProfile = (request: Request): Profile | undefined => request.session?.profile ?? undefined;
+    const sessionUser = (request: Request): User | undefined => request.session?.user ?? undefined;
     console.log(request.sessionID)
 
     const signature = (request: Request): string => request.session?.signature ?? 'no signature'
 
-    const isSessionActive = (isProfileActive: Profile | undefined): boolean => isProfileActive ? true : false;
+    const isSessionActive = (isUserActive: User | undefined): boolean => isUserActive ? true : false;
 
     const getJwtTokenFromHeader = (headers: IncomingHttpHeaders): string | undefined => {
 
@@ -48,6 +48,6 @@ export function isLoggedIn(request: Request, response: Response, next: NextFunct
 
     }
 
-    return isJwtValid(unverifiedJwtToken) && isSessionActive(sessionProfile(request)) ? next() : response.json(status);
+    return isJwtValid(unverifiedJwtToken) && isSessionActive(sessionUser(request)) ? next() : response.json(status);
 
 }

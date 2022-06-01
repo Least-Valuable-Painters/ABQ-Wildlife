@@ -10,7 +10,7 @@ export async function signInController (request: Request, response: Response): P
     try {
         const { userEmail, userPassword } = request.body
         const user: User | null = await selectUserByUserEmail(userEmail)
-
+        console.log(user)
         return (user !== null) && await validatePassword(user.userHash, userPassword)
             ? signInSuccessful(request, response, user)
             : signInFailed(response)
