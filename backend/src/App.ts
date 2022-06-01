@@ -10,6 +10,8 @@ const session = require("express-session")
 import { SignoutRoute } from './apis/signout/signout.route'
 import locationRoute from "./apis/location/location.route";
 import imageRoute from "./apis/image/image.route";
+import commentRoute from "./apis/comment/comment.route";
+import favoriteRoute from "./apis/favorite/favorite.route";
 const MemoryStore = require('memorystore')(session)
 
 // The following class creates the app and instantiates the server
@@ -56,6 +58,8 @@ export class App {
         this.app.use('/apis/signout', SignoutRoute)
         this.app.use('/apis/location', locationRoute)
         this.app.use('/apis/image', imageRoute)
+        this.app.use('/apis/comment', commentRoute)
+        this.app.use('/apis/favorite', favoriteRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

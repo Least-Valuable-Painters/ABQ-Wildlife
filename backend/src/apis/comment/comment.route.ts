@@ -19,7 +19,7 @@ router.route("/:commentId").get(  asyncValidatorController([
 
 router.route("/commentUserId/:commentUserId").get(  asyncValidatorController([
     check("commentUserId", "please provide a valid commentUserId").isUUID()
-]), getCommentByCommentIdController)
+]), getCommentsByCommentUserIdController)
 
 // Every new route is instantiated below. It will include the controller name and the type of action (get, post, delete, put, patch)
 router.route('/')
