@@ -13,7 +13,7 @@ export const signupValidator: Schema= {
         isEmail: {
             errorMessage: "please provide a valid email address"
         },
-        normalizeEmail: true,
+        //normalizeEmail: true,
         trim: true
     },
     userPassword: {
