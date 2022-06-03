@@ -1,0 +1,35 @@
+.background {
+    background-color: #FFFFFF;
+    width: 50%;
+    margin: auto;
+}
+
+
+h1 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #9F9F9F;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.favorites-row {
+    color: #686868;
+    font-size: medium;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.list-group .list-group-item:hover {
+    background: #01C5FF;
+}
+
+.list-group .list-group-item-light.active {
+    background: #01C5FF;
+}
+
+.list-group .list-group-item-secondary.active {
+    background: #01C5FF;
+}
