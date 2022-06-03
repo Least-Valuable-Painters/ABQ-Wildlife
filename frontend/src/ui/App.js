@@ -4,6 +4,8 @@ import { Home } from './Home'
 import { FourOhFour } from './FourOhFour'
 import React from 'react'
 import {Navbar} from "./Navbar";
+import "./App.css"
+
 
 
 export const App = () => (
