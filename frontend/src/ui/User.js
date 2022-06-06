@@ -9,25 +9,25 @@ export function User () {
       <Row>
         <Col>
       <Form className="w-50 mx-auto">
-        <FormGroup>
+        <FormGroup className="mt-3">
           <FormLabel>Name</FormLabel>
           <FormControl type="name" placeholder="please enter your name"></FormControl>
         </FormGroup>
-        <FormGroup>
+        <FormGroup className="mt-3">
           <FormLabel>Email</FormLabel>
           <FormControl type="email" placeholder="please enter your email address"></FormControl>
         </FormGroup>
-        <FormGroup>
+        <FormGroup className="mt-3">
           <FormLabel>Password</FormLabel>
           <FormControl type="password" placeholder="please enter your password"></FormControl>
         </FormGroup>
         <FormGroup controlId="formBasicCheckbox">
-          <FormCheck type="checkbox" label="Turn location data on:" />
+          <FormCheck className="mt-3" type="checkbox" label="Turn location data on:" />
         </FormGroup>
-        <FormGroup className="" controlId="formBasicCheckbox">
-          <FormCheck type="checkbox" label="Get email updates:" />
+        <FormGroup controlId="formBasicCheckbox">
+          <FormCheck className="mt-3" type="checkbox" label="Get email updates:" />
         </FormGroup>
-        <Button variant="primary">Submit</Button>
+        <Button className="mt-3" variant="primary">Submit</Button>
       </Form>
         </Col>
       </Row>
