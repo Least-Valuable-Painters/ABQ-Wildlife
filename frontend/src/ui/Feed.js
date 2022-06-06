@@ -7,7 +7,7 @@ export const Feed = () => {
         <>
             <Container className="nav-open">
             <div className="Body">
-                <p>i am the body</p>
+                <p>i am the body, yep</p>
             </div>
             </Container>
         </>

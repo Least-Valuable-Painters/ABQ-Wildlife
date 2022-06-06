@@ -3,7 +3,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Feed } from './Feed';
 import { FourOhFour } from './FourOhFour';
-import {Navbar2} from "./Navbar2";
+import {OffCanvasNavbar} from "./Navbar";
+import { Upload } from './Upload'
 // import {OffCanvasNavbar} from "./Navbar";
 
 
@@ -11,10 +12,11 @@ import {Navbar2} from "./Navbar2";
 export const App = () => (
     <>
         <BrowserRouter>
-            {/*<OffCanvasNavbar/>*/}
-            <Navbar2/>
+            <OffCanvasNavbar/>
+            {/*<Navbar2/>*/}
             <Routes>
-                <Route  path='/' element={<Feed />} />
+                <Route path='/' element={<Feed />} />
+                <Route path='/upload' element={<Upload />} />
                 <Route path='*' element={<FourOhFour />} />
             </Routes>
         </BrowserRouter>
