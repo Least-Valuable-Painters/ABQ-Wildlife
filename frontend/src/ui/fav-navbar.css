@@ -1,0 +1,17 @@
+.menu-button btn btn-secondary {
+    color: white;
+    font-family: sans-serif;
+}
+
+.navbar-body {
+    background-color: #01C5FF !important;
+    width: 15%;
+    color: white;
+
+}
+
+@media screen and (max-width:768px) {
+    .navbar-body {
+        width: 50%;
+    }
+}
