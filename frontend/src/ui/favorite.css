@@ -33,3 +33,10 @@ h1 {
 .list-group .list-group-item-secondary.active {
     background: #01C5FF;
 }
+
+@media screen and (max-width:768px) {
+    .background {
+        width: 100%;
+        margin: auto;
+    }
+}
