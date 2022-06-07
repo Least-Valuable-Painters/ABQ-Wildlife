@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {Button, Offcanvas} from "react-bootstrap";
-import "./fav-navbar.css"
+import "./navbar.css"
 
 
 
-export const FavNavbar = () => {
+export const Navbar = () => {
 
     const [show, setShow] = useState(false);
 

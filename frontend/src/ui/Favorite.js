@@ -1,14 +1,14 @@
 import React from "react";
 import {ListGroup, Container, Row} from "react-bootstrap";
 import './favorite.css';
-import {FavNavbar} from "./FavNavbar";
+import {Navbar} from "./Navbar";
 
 
 export const ClickFavorite = () => {
 
     return (
         <>
-            <FavNavbar/>
+            <Navbar/>
             <Container className="background">
                 <Row className="favorites-row">
 
