@@ -1,9 +1,19 @@
 .uploadBody {
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
+}
+
+.uploadHeader {
+    color: white;
 }
 
 .descriptionForm {
     border-radius: 5px;
+}
+
+.formContainer {
+    padding: 0.5rem;
+    margin: 1rem 0 1rem;
+    color: white;
 }
 
 
