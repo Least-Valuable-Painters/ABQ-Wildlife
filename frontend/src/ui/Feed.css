@@ -1,0 +1,53 @@
+.carousel {
+    overflow: hidden;
+    margin-top: 20vh;
+}
+
+.inner {
+    white-space: nowrap;
+}
+
+.carousel-item {
+    /*display: inline-flex;*/
+    /*align-items: center;*/
+    /*!*justify-content: center;*!*/
+    height: 100%;
+    background-color: green;
+    color: white;
+}
+
+#carousel1 {
+    display: flex;
+    width: 100vh;
+    /*justify-content: center;*/
+    /*justify-items: center;*/
+    align-items: center;
+    text-align: center;
+}
+
+#carousel2 {
+    display: flex;
+    width: 100vh;
+    /*justify-content: center;*/
+    /*justify-items: center;*/
+    align-items: center;
+    text-align: center;
+}
+
+#carousel3 {
+    display: flex;
+    width: 100vh;
+    /*justify-content: center;*/
+    /*justify-items: center;*/
+    align-items: center;
+    text-align: center;
+}
+
+#carousel4 {
+    display: flex;
+    width: 100vh;
+    /*justify-content: center;*/
+    /*justify-items: center;*/
+    align-items: center;
+    text-align: center;
+}
