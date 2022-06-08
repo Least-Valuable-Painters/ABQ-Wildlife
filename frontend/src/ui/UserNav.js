@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Offcanvas} from "react-bootstrap";
+import {Button, Col, Container, Form, FormControl, FormGroup, FormLabel, Offcanvas, Row} from "react-bootstrap";
 import "./navbar.css"
 
 
@@ -21,6 +21,25 @@ export const Navbar = () => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Sign In</Offcanvas.Title>
         </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Container>
+            <Row>
+              <Col>
+                <Form>
+                  <FormGroup className="mt-3">
+                    <FormLabel>Username</FormLabel>
+                    <FormControl type="username" placeholder="username"></FormControl>
+                  </FormGroup>
+                  <FormGroup className="mt-3 mb-3">
+                    <FormLabel>Password</FormLabel>
+                    <FormControl type="username" placeholder="password"></FormControl>
+                  </FormGroup>
+                  <Button className="mt-3" variant="primary">Sign In</Button>
+                </Form>
+              </Col>
+            </Row>
+          </Container>
+        </Offcanvas.Body>
         <Offcanvas.Body>
           Feed #
         </Offcanvas.Body>
