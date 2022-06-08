@@ -9,6 +9,8 @@ import {Navbar} from "./Navbar";
 import {ScratchMap} from "./ScratchMap";
 import {Provider} from "react-redux";
 import {User} from "./User";
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 
 export const App = (store) => (

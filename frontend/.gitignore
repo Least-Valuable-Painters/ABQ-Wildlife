@@ -24,4 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # setup Proxy
+<<<<<<< HEAD
 **/setupProxy.js
+=======
+**/setupProxy.js
+>>>>>>> favorite
