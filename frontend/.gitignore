@@ -25,4 +25,3 @@ yarn-error.log*
 
 # setup Proxy
 **/setupProxy.js
-**/jona.setupProxy.js
