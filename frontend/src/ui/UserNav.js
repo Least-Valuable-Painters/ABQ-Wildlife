@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <>
       <Button className="menu-button" variant="secondary" onClick={handleShow}>
-        Expand Menu
+        Expand Menu/Sign In
       </Button>
 
       <Offcanvas show={show} className="navbar-body" onHide={handleClose}>
