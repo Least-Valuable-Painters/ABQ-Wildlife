@@ -1,6 +1,6 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
-import uploadPlaceholder from '../img/uploadPlaceholder2.jpg'
+import uploadPlaceholder from '../img/uploadPlaceholder.jpg'
 import './App.css'
 
 
