@@ -5,7 +5,7 @@ import {Upload} from './Upload';
 import {FourOhFour} from './FourOhFour';
 import React from 'react';
 import {ClickFavorite} from "./Favorite";
-import {Navbar} from "./Navbar";
+import {Navbar} from "./shared/components/usernav/UserNav";
 import {ScratchMap} from "./ScratchMap";
 import {Provider} from "react-redux";
 import {User} from "./User";
@@ -17,8 +17,9 @@ export const App = (store) => (
     <>
         <Provider store={store}>
             <BrowserRouter>
+                <Navbar/>
                 <Routes>
-                    <Route path='/home' element={<Home/>}/>
+                    <Route path='/' element={<Home/>}/>
                     <Route path='*' element={<FourOhFour/>}/>
                     <Route path='/favorite' element={<ClickFavorite/>}/>
                     <Route path='/favnav' element={<Navbar/>}/>

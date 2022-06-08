@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Col, Container, Form, FormCheck, FormControl, FormGroup, FormLabel, Row} from "react-bootstrap";
-import {Navbar} from "./UserNav";
+import {Navbar} from "./shared/components/usernav/UserNav";
 
 
 
@@ -9,7 +9,6 @@ import {Navbar} from "./UserNav";
 export function User () {
   return(
     <>
-      <Navbar/>
       <h1 className="text-center"><u>Sign Up</u></h1>
     <Container>
       <Row>
