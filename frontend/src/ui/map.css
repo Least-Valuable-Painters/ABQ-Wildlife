@@ -6,8 +6,18 @@ h1 {
     color: #949494;
 }
 
+h2 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    color: #949494;
+    padding: 15px;
+}
+
 .map-wrapper {
     background-color: #DEDEDE;
     margin: auto;
+    align-content: center;
 }
 

@@ -6,6 +6,7 @@ import React from 'react'
 import {ClickFavorite} from "./Favorite";
 import {Navbar} from "./Navbar";
 import {ScratchMap} from "./ScratchMap";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 
 
