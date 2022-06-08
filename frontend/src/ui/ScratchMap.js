@@ -33,7 +33,7 @@ export const ScratchMap = () => {
                             style={{width: 700, height: 600}}
                             mapStyle="mapbox://styles/mapbox/dark-v9">
 
-                            {points.map((point, index)  => <Pin lat={point.lat} index={index} key={index}/>>)}
+                            {points.map((point, index)  => <Pin lat={point.lat} index={index} key={index}/>)}
                         </Map>
                     </Col>
                 </Row>
