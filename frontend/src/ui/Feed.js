@@ -14,6 +14,7 @@ import jpg8 from "./feed-images/Cebolla-3.jpg"
 import jpg9 from "./feed-images/Midnight-1.jpg"
 import jpg10 from "./feed-images/Midnight-2.jpg"
 import jpg11 from "./feed-images/Midnight-3.jpg"
+import {Navbar} from "./Navbar";
 
 
 export function Feed() {
@@ -24,6 +25,7 @@ export function Feed() {
     };
     return (
         <>
+            <Navbar/>
                 <Carousel id="carousel1" activeIndex={index} onSelect={handleSelect} className="mx-auto">
                     <Carousel.Item>
                         <img
