@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Col, Container, Form, FormCheck, FormControl, FormGroup, FormLabel, Row} from "react-bootstrap";
 
+
 export function User () {
   return(
     <>
@@ -32,6 +33,24 @@ export function User () {
         </Col>
       </Row>
     </Container>
+      <h3 className="text-center"><u>Sign In</u></h3>
+      <Container>
+        <Row>
+          <Col>
+            <Form className="w-25 mx-auto">
+              <FormGroup className="mt-3">
+                <FormLabel>Username</FormLabel>
+                <FormControl type="username" placeholder="username"></FormControl>
+              </FormGroup>
+              <FormGroup className="mt-3 mb-3">
+                <FormLabel>Password</FormLabel>
+                <FormControl type="username" placeholder="password"></FormControl>
+              </FormGroup>
+              <Button className="mt-3" variant="primary">Submit</Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
       </>
   )
 }
