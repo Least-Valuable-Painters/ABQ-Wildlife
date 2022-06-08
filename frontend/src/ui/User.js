@@ -10,7 +10,7 @@ export function User () {
   return(
     <>
       <Navbar/>
-      <h1 className="text-center"><u>Profile</u></h1>
+      <h1 className="text-center"><u>Sign Up</u></h1>
     <Container>
       <Row>
         <Col>
