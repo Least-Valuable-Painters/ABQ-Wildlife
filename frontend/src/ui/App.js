@@ -5,6 +5,8 @@ import { FourOhFour } from './FourOhFour'
 import React from 'react'
 import {ClickFavorite} from "./Favorite";
 import {Navbar} from "./Navbar";
+import {ScratchMap} from "./ScratchMap";
+
 
 
 export const App = () => (
@@ -15,6 +17,8 @@ export const App = () => (
                 <Route path='/four' element={<FourOhFour />} />
                 <Route path='/favorite' element={<ClickFavorite />} />
                 <Route path='/favnav' element={<Navbar />} />
+                <Route path='/map' element={<ScratchMap />} />
+
             </Routes>
         </BrowserRouter>
     </>
