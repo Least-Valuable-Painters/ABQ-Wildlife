@@ -16,9 +16,7 @@ export const ScratchMap = () => {
 
     return (
         <>
-            <Navbar/>
             <h1>Home</h1>
-
             <Container className="map-wrapper">
                 <Row className="justify-content-center">
                     <Col>
