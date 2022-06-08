@@ -1,9 +1,9 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.css'
-import {Home} from './Home'
-import {Upload} from './Upload'
-import {FourOhFour} from './FourOhFour'
-import React from 'react'
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import {Home} from './Home';
+import {Upload} from './Upload';
+import {FourOhFour} from './FourOhFour';
+import React from 'react';
 import {ClickFavorite} from "./Favorite";
 import {Navbar} from "./Navbar";
 import {ScratchMap} from "./ScratchMap";
