@@ -1,0 +1,13 @@
+h1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    color: #949494;
+}
+
+.map-wrapper {
+    background-color: #DEDEDE;
+    margin: auto;
+}
+
