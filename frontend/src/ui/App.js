@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Home } from './Home'
+import { Upload } from './Upload'
 import { FourOhFour } from './FourOhFour'
 import React from 'react'
 import {ClickFavorite} from "./Favorite";
@@ -18,7 +19,6 @@ export const App = () => (
                 <Route path='/favorite' element={<ClickFavorite />} />
                 <Route path='/favnav' element={<Navbar />} />
                 <Route path='/map' element={<ScratchMap />} />
-
             </Routes>
         </BrowserRouter>
     </>
