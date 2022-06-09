@@ -6,7 +6,7 @@ import {Navbar} from "./shared/components/usernav/UserNav";
 
 
 
-export function User () {
+export function SignUp () {
   return(
     <>
       <h1 className="text-center"><u>Sign Up</u></h1>

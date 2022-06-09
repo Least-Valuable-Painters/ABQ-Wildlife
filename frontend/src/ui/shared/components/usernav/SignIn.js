@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import * as Yup from 'yup'
 import {httpConfig} from "../../utils/httpConfig";
 import {Formik} from "formik";
-import {User} from "../../../User";
+import {SignUp} from "../../../SignUp";
 import {fetchAllSignIn} from "../../../../store/signin";
 import {DisplayError} from "../display-error/DisplayError";
 import {DisplayStatus} from "../DisplayStatus";

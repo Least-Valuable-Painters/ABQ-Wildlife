@@ -8,7 +8,7 @@ import {ClickFavorite} from "./Favorite";
 import {Navbar} from "./shared/components/usernav/UserNav";
 import {ScratchMap} from "./ScratchMap";
 import {Provider} from "react-redux";
-import {User} from "./User";
+import {SignUp} from "./SignUp";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 
@@ -25,7 +25,7 @@ export const App = (store) => (
                     <Route path='/favnav' element={<Navbar/>}/>
                     <Route path='/map' element={<ScratchMap/>}/>
                     <Route path='/upload' element={<Upload/>}/>
-                    <Route path='/user' element={<User/>}/>
+                    <Route path='/user' element={<SignUp/>}/>
                 </Routes>
             </BrowserRouter>
         </Provider>
