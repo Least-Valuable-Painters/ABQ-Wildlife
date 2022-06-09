@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Provider} from "react-redux";
 import {Home} from './Home';
 import {FourOhFour} from './FourOhFour';
-import {Navbar} from "./Navbar";
+// import {Navbar} from "./Navbar";
 import {Upload} from './Upload';
 import {Feed} from "./Feed";
 import {ClickFavorite} from "./Favorite";

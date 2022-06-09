@@ -34,16 +34,7 @@ export const Upload = () => {
                                                aria-label="locationForm"/>
                                     </Col>
                                 </Row>
-                                <Row className="m-3">
-                                    <Col lg={3} md={5} sm={6}>
-                                        <label htmlFor="titleForm" className="labelItem"/>
-                                        Title:
-                                    </Col>
-                                    <Col lg={9} md={7} sm={6}>
-                                        <input id="titleForm" type="text" name="titleForm" placeholder="Title"
-                                               aria-label="titleForm"/>
-                                    </Col>
-                                </Row>
+
                                 <Row className="m-3">
                                     <Col lg={3} md={5} sm={6}>
                                         <label htmlFor="descriptionForm" className="labelItem"/>
