@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Button, Col, Container, Form, FormControl, FormGroup, FormLabel, Offcanvas, Row} from "react-bootstrap";
-import "./navbar.css"
+import "../../../navbar.css"
+import {SignIn} from "./SignIn";
 
 
 
@@ -25,17 +26,7 @@ export const Navbar = () => {
           <Container>
             <Row>
               <Col>
-                <Form>
-                  <FormGroup className="mt-3">
-                    <FormLabel>Username</FormLabel>
-                    <FormControl type="username" placeholder="username"></FormControl>
-                  </FormGroup>
-                  <FormGroup className="mt-3 mb-3">
-                    <FormLabel>Password</FormLabel>
-                    <FormControl type="username" placeholder="password"></FormControl>
-                  </FormGroup>
-                  <Button className="mt-3" variant="primary">Sign In</Button>
-                </Form>
+                <SignIn/>
               </Col>
             </Row>
           </Container>
