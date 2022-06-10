@@ -16,7 +16,7 @@ import jpg10 from "./feed-images/Midnight-2.jpg"
 import jpg11 from "./feed-images/Midnight-3.jpg"
 import {Navbar} from "./Navbar";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import {ScratchMap} from "./ScratchMap";
+import {ScratchMap} from "./map/ScratchMap";
 
 export function Feed() {
     const [index, setIndex] = useState(0);

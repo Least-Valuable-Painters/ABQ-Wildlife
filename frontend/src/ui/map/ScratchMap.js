@@ -1,5 +1,5 @@
 import React from "react";
-import {Navbar} from "./Navbar";
+import {Navbar} from "../Navbar";
 import {Col, Container, Row} from "react-bootstrap";
 import './map.css'
 import Map from "react-map-gl";

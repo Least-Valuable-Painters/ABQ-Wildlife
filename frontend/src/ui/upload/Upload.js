@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
-import uploadPlaceholder from '../img/uploadPlaceholder.jpg'
-import './App.css'
+import uploadPlaceholder from '../../img/uploadPlaceholder.jpg'
+import '../App.css'
 
 
 export const Upload = () => {
@@ -22,7 +22,7 @@ export const Upload = () => {
                                 <img className="img-fluid uploadPlaceholder" src={uploadPlaceholder}
                                      alt="upload placeholder"></img>
                             </div>
-                            <form className="formContainer bg-primary rounded-3 w-100" action="./apis/" method="post" noValidate>
+                            <form className="formContainer bg-primary rounded-3 w-100" action="./Upload" method="post" noValidate>
                                 <Row className="m-3">
                                     <Col lg={3} md={5} sm={6}>
                                         <label htmlFor="locationForm" className="labelItem"/>
