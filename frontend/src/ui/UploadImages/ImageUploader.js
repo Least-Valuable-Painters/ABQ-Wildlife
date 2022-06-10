@@ -7,7 +7,8 @@ import {Col, Container, Row} from "react-bootstrap";
 import {ImageDropZone} from "../shared/components/ImageDropZone";
 
 
-export function ImageUploader() {
+export function ImageUploader(props) {
+    const {imageUserId} = props
 
     const validationObject = Yup.object().shape({
         imageLocationId: Yup.string()
@@ -33,7 +34,7 @@ export function ImageUploader() {
                 .then(reply => {
                         let {message, type} = reply
                         if (reply.status === 200) {
-                            submitImage({...values, imageURL: message})
+                            submitImage({...values, imageUserId, imageURL: message})
                         } else {
                             setStatus({message, type});
                         }

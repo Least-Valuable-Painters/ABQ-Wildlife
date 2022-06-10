@@ -12,7 +12,7 @@ import {ScratchMap} from "./ScratchMap";
 import {Navbar} from "./shared/components/usernav/UserNav";
 import {SignUp} from "./SignUp";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import {ImageUploader} from "./UploadImages/ImageUploader";
+import {Image} from "./UploadImages/Image";
 
 
 
@@ -28,7 +28,7 @@ export const App = (store) => (
                     <Route path='/favnav' element={<Navbar/>}/>
                     <Route path='/' element={<Feed/>}/>
                     <Route path='/map' element={<ScratchMap/>}/>
-                    <Route path='/upload' element={<ImageUploader/>}/>
+                    <Route path='/upload' element={<Image/>}/>
                     <Route path='/user' element={<SignUp/>}/>
                 </Routes>
             </BrowserRouter>
