@@ -17,6 +17,6 @@ export default locationSlice.reducer
 
 // create an export to allow async calls to our action
 export const fetchAllLocations = () => async dispatch => {
-    const {data} = await httpConfig('../ui/shared/utils/httpConfig')
+    const {data} = await httpConfig('/apis/location')
     dispatch(setAllLocations(data))
 }
