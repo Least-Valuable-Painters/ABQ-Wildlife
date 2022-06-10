@@ -16,11 +16,7 @@ export const Upload = () => {
                         <Col xs={12} md={10} lg={6}>
                             <div className="text-center p-3 my-3 uploadHeader bg-primary rounded">
                                 <h1><strong>Upload</strong></h1>
-                                <p className="my-4">Choose a file to upload from your computer</p>
-                            </div>
-                            <div className="text-center">
-                                <img className="img-fluid uploadPlaceholder" src={uploadPlaceholder}
-                                     alt="upload placeholder"></img>
+                                <p className="my-4">Choose a file to upload from your computer or drag and drop it here</p>
                             </div>
                             <form className="formContainer bg-primary rounded-3 w-100" action="./apis/" method="post" noValidate>
                                 <Row className="m-3">
@@ -32,18 +28,6 @@ export const Upload = () => {
                                         <input id="locationForm" type="text" name="locationForm"
                                                placeholder="Location"
                                                aria-label="locationForm"/>
-                                    </Col>
-                                </Row>
-
-                                <Row className="m-3">
-                                    <Col lg={3} md={5} sm={6}>
-                                        <label htmlFor="descriptionForm" className="labelItem"/>
-                                        Description:
-                                    </Col>
-                                    <Col lg={9} md={7} sm={6}>
-                                        <textarea id="descriptionForm" name="descriptionForm"
-                                               placeholder="Description"
-                                               aria-label="descriptionForm" rows="3"/>
                                     </Col>
                                 </Row>
                             </form>
