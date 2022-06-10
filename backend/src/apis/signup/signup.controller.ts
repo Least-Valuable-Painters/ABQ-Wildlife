@@ -11,7 +11,7 @@ import {Status} from "../../utils/interfaces/Status";
 
 export async function signupUserController(request: Request, response: Response): Promise<Response | undefined> {
     try {
-
+console.log("anything")
         const mailgun: Mailgun = new Mailgun(formData)
         const mailgunClient: Client = mailgun.client({username: "api", key: <string>process.env.MAILGUN_API_KEY})
         const {userIsAdmin, userEmail, userName, userPassword} = request.body;
@@ -36,9 +36,10 @@ export async function signupUserController(request: Request, response: Response)
             userName,
             userEmail,
             userHash,
-            userIsAdmin,
+            userIsAdmin: false,
             userActivationToken,
         };
+
         await insertUser(user)
 
         await mailgunClient.messages.create(<string>process.env.MAILGUN_DOMAIN, mailgunMessage)
