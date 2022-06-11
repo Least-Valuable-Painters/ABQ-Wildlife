@@ -18,10 +18,10 @@ export function ImageUploader(props) {
 
     })
 
-    function submitImage(value, {resetForm, setStatus}) {
+    function submitImage(values, {resetForm, setStatus}) {
 
 
-        httpConfig.post(`/apis/image-upload/`, values.imageUrl)
+        httpConfig.post(`/apis/image/upload/`, values.imageUrl)
             .then(reply => {
                     let {message, type} = reply
                     if (reply.status === 200) {

@@ -40,6 +40,7 @@ export async function getLocationByLocationIdController(request : Request, respo
 }
 
 export async function getLocationsByLocationIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
+    console.log("LocationsByLocationIdController")
     async function selectLocationsByLocationId(locationId: string) {
 
     }

@@ -1,11 +1,13 @@
 import { NextFunction , Request, Response } from 'express';
 import {selectAllImages} from "../../utils/image/selectAllImages";
 import {selectImagesByImageUserId} from "../../utils/image/selectImagesByImageUserId";
+import {selectImagesByImageId} from "../../utils/image/selectImagesByImageId";
 import {Status} from "../../utils/interfaces/Status";
 import {uploadToCloudinary} from "../../utils/cloudinary.utils";
 import {insertImage} from "../../utils/image/insertImage";
 import {Image} from "../../utils/interfaces/Image"
 import {User} from "../../utils/interfaces/User";
+
 export async function getAllImagesController(request: Request, response: Response): Promise<Response | undefined> {
 
     try {
@@ -39,9 +41,9 @@ export async function getImagesByImageUserIdController(request : Request, respon
 }
 
 export async function getImagesByImageIdController(request : Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>>{
-    async function selectImagesByImageId(imageId: string) {
-
-    }
+    // async function selectImagesByImageId(imageId: string) {
+    //
+    // }
 
     try {
         const {imageId} = request.params
@@ -57,6 +59,7 @@ export async function getImagesByImageIdController(request : Request, response: 
 }
 
 export async function postImage(request: Request, response: Response) : Promise<Response<Status>> {
+    console.log("HEloo")
     try {
 
         const {imageLocationId, imageCloudinaryId, imageUrl} = request.body;
@@ -90,9 +93,10 @@ export async function postImage(request: Request, response: Response) : Promise<
 
 
 export async function uploadImageController(request: Request, response: Response) : Promise<Response<Status>> {
+    console.log(request.file)
     try {
         if (request.file === undefined) {
-            throw new Error('Please provide a valid file type')
+            throw new Error('Please provide a valid file type') //NOT TOO SURE ABOUT THIS
         }
         // @ts-ignore
         const message : string = await uploadToCloudinary(request.file)
@@ -106,6 +110,7 @@ export async function uploadImageController(request: Request, response: Response
 
 
     } catch(error:any) {
+        console.log(error)
         return  response.json({
             status: 500,
             message: error.message,
