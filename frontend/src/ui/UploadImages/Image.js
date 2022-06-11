@@ -17,7 +17,7 @@ export const Image = () => {
 
     return (
         <>
-            {auth && locations && <ImageUploader imageProfileId={auth.userId} locations={locations}/>}
+            {auth && locations && <ImageUploader imageUserId={auth.userId} locations={locations}/>}
         </>
     )
 }

@@ -14,6 +14,7 @@ export const uploadToCloudinary = async (file: Express.Multer.File): Promise<str
         api_key: process.env.CLOUDINARY_KEY,
         api_secret: process.env.CLOUDINARY_SECRET,
         cloud_name: process.env.CLOUD_NAME
+
     })
 
     return await new Promise((resolve, reject): void => {

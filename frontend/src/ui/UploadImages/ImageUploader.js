@@ -9,7 +9,9 @@ import {FormDebugger} from "../shared/components/FormDebugger";
 
 
 export function ImageUploader(props) {
+
     const {imageUserId, locations} = props
+    console.log(imageUserId)
     console.log(locations)
     const validationObject = Yup.object().shape({
         imageLocationId: Yup.string()
