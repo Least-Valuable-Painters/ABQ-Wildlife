@@ -45,7 +45,7 @@ export async function signupUserController(request: Request, response: Response)
 
         const status: Status = {
             status: 200,
-            message: 'User successfully created please check your email.',
+            message: 'SignUp successfully created please check your email.',
             data: null
         };
 
