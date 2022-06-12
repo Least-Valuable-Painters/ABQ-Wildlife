@@ -4,11 +4,11 @@ import {useDispatch} from "react-redux";
 import * as Yup from 'yup'
 import {httpConfig} from "../../utils/httpConfig";
 import {Formik} from "formik";
-import {SignUp} from "../../../SignUp";
-import {fetchAllSignIn} from "../../../../store/signin";
 import {DisplayError} from "../display-error/DisplayError";
 import {DisplayStatus} from "../DisplayStatus";
 import {FormDebugger} from "../FormDebugger";
+import jwtDecode from "jwt-decode";
+import {getAuth} from "../../../../store/auth";
 
 export function SignIn() {
 
@@ -24,15 +24,19 @@ export function SignIn() {
   })
 
   const handleSubmit = (values, { resetForm, setStatus }) => {
-    httpConfig.post('/apis/signin/', values).then(reply => {
-      const { message, type, status } = reply
-      if (status === 200) {
-        resetForm()
-        dispatch(fetchAllSignIn())
+    httpConfig.post('/apis/signin/', values)
+        .then(reply => {
+          const { message, type, status } = reply
+          if (reply.status === 200 && reply.headers["authorization"]) {
+            window.localStorage.removeItem("authorization");
+            window.localStorage.setItem("authorization", reply.headers["authorization"]);
+            resetForm();
+            let jwtToken = jwtDecode(reply.headers["authorization"])
+            dispatch(getAuth(jwtToken))
       }
-      setStatus({ message, type })
-    })
-  }
+      setStatus({ message, type });
+    });
+  };
 
   const signIn = {
     userEmail: '',
@@ -55,6 +59,7 @@ export function SignIn() {
 
 
 function PostSignInContent (props) {
+  console.log("userName, userPassword")
   const {
     status,
     values,
