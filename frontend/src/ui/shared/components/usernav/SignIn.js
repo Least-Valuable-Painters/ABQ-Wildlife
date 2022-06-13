@@ -59,7 +59,7 @@ export function SignIn() {
 
 
 function PostSignInContent (props) {
-  console.log("userName, userPassword")
+  //console.log("userName, userPassword")
   const {
     status,
     values,
