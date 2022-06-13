@@ -43,7 +43,7 @@ export function Feed() {
         <>
             <Navbar/>
             <ScratchMap/>
-            {images.length && locations.map(location => <>(<p>{location.locationName}</p>))</>}
+            {images.length && locations.map(location => <>(<p>{location.locationName}</p>))</>)}
             {images.length && locations.map(location => (
               <>
                   <Carousel id={location.locationId} activeIndex={index} onSelect={handleSelect} interval={null} className="mx-auto">
