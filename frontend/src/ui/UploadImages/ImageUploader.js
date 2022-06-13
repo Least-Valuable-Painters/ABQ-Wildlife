@@ -107,9 +107,9 @@ export function ImageUploader(props) {
                                                         <select name="imageLocationId" className="form-select" onBlur={handleBlur} onChange={handleChange} value={values.locationId}
                                                                 id="imageLocationId">
                                                             {/*{console.log(locations)}*/}
-                                                          <option value="" disabled selected>Select your option</option>
+                                                          <option value="" disabled selected>Select a location</option>
                                                             {locations.map(location => <option
-                                                                value={location.locationId}>{location.locationName}</option>)}
+                                                                value={location.locationId} key={location.locationId}>{location.locationName}</option>)}
                                                         </select>
                                                     </Col>
                                                 </Row>
