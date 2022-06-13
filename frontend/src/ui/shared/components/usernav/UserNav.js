@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Button, Col, Container, Form, FormControl, FormGroup, FormLabel, Offcanvas, Row} from "react-bootstrap";
+import Nav from 'react-bootstrap/Nav';
 import "../../../navbar.css"
 import {SignIn} from "./SignIn";
 
@@ -32,19 +33,16 @@ export const Navbar = () => {
           </Container>
         </Offcanvas.Body>
         <Offcanvas.Body>
-          Feed #
+          <Nav.Link href="/">Feed</Nav.Link>
         </Offcanvas.Body>
         <Offcanvas.Body>
-          AWF #
+          <Nav.Link href="/favorite">Favorites</Nav.Link>
         </Offcanvas.Body>
         <Offcanvas.Body>
-          Favorites &#9733;
+          <Nav.Link href="/upload">Upload</Nav.Link>
         </Offcanvas.Body>
         <Offcanvas.Body>
-          Profile
-        </Offcanvas.Body>
-        <Offcanvas.Body>
-          Upload
+          <Nav.Link href="/user">Sign Up</Nav.Link>
         </Offcanvas.Body>
       </Offcanvas>
 

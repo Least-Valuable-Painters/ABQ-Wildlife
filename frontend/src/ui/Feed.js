@@ -2,19 +2,19 @@ import React, {useEffect, useState} from 'react';
 import {Carousel} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Feed.css"
-import jpg from "./feed-images/cedro-creek-1.jpg"
-import img from "./feed-images/cedro-creek-2.jpg"
-import jpg2 from "./feed-images/cedro-creek-3.jpg"
-import jpg3 from "./feed-images/Aldo-1.jpg"
-import jpg4 from "./feed-images/Aldo-2.jpg"
-import jpg5 from "./feed-images/Aldo-3.jpg"
-import jpg6 from "./feed-images/Cebolla-1.jpg"
-import jpg7 from "./feed-images/Cebolla-2.jpg"
-import jpg8 from "./feed-images/Cebolla-3.jpg"
-import jpg9 from "./feed-images/Midnight-1.jpg"
-import jpg10 from "./feed-images/Midnight-2.jpg"
-import jpg11 from "./feed-images/Midnight-3.jpg"
-import {Navbar} from "./Navbar";
+// import jpg from "./feed-images/cedro-creek-1.jpg"
+// import img from "./feed-images/cedro-creek-2.jpg"
+// import jpg2 from "./feed-images/cedro-creek-3.jpg"
+// import jpg3 from "./feed-images/Aldo-1.jpg"
+// import jpg4 from "./feed-images/Aldo-2.jpg"
+// import jpg5 from "./feed-images/Aldo-3.jpg"
+// import jpg6 from "./feed-images/Cebolla-1.jpg"
+// import jpg7 from "./feed-images/Cebolla-2.jpg"
+// import jpg8 from "./feed-images/Cebolla-3.jpg"
+// import jpg9 from "./feed-images/Midnight-1.jpg"
+// import jpg10 from "./feed-images/Midnight-2.jpg"
+// import jpg11 from "./feed-images/Midnight-3.jpg"
+// import {Navbar} from "./shared/components/usernav/UserNav";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import {ScratchMap} from "./ScratchMap";
 import {useDispatch, useSelector} from "react-redux";
@@ -41,14 +41,11 @@ export function Feed() {
     };
     return (
         <>
-            <Navbar/>
             <ScratchMap/>
-            {images.length && locations.map(location => <>(<p>{location.locationName}</p>))</>)}
             {images.length && locations.map(location => (
-              <>
-                  <Carousel id={location.locationId} activeIndex={index} onSelect={handleSelect} interval={null} className="mx-auto">
+                  <Carousel id={location.locationId} key={location.locationId} activeIndex={index} onSelect={handleSelect} interval={null} className="mx-auto">
                       {images.filter(image => image.imageLocationId === location.locationId).map(image => (
-                        <Carousel.Item>
+                        <Carousel.Item key={image.imageId}>
                             <img
                               className="d-block w-100"
                               src={image.imageUrl}
@@ -62,7 +59,6 @@ export function Feed() {
                       ))}
 
                   </Carousel>
-              </>
             ))}
                 {/*<Carousel id="carousel1" activeIndex={index} onSelect={handleSelect} className="mx-auto">*/}
                 {/*    <Carousel.Item>*/}

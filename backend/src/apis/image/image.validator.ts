@@ -26,6 +26,6 @@ export const imageValidator : Schema = {
             options: { max: 255 }
         },
         trim: true,
-        escape: true
+        isURL: {errorMessage: "Url required"}
     }
 };
