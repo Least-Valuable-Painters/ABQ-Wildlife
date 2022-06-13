@@ -22,7 +22,6 @@ export const App = (store) => (
             <BrowserRouter>
                 <Navbar/>
                 <Routes>
-                    <Route path='/' element={<Home/>}/>
                     <Route path='*' element={<FourOhFour/>}/>
                     <Route path='/favorite' element={<ClickFavorite/>}/>
                     <Route path='/favnav' element={<Navbar/>}/>
