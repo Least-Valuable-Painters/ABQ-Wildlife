@@ -22,13 +22,13 @@ export const App = (store) => (
             <BrowserRouter>
                 <Navbar/>
                 <Routes>
-                    <Route path='*' element={<FourOhFour/>}/>
                     <Route path='/favorite' element={<ClickFavorite/>}/>
                     <Route path='/favnav' element={<Navbar/>}/>
                     <Route path='/' element={<Feed/>}/>
                     <Route path='/map' element={<ScratchMap/>}/>
                     <Route path='/upload' element={<Image/>}/>
                     <Route path='/user' element={<SignUp/>}/>
+                    <Route path='*' element={<FourOhFour/>}/>
                 </Routes>
             </BrowserRouter>
         </Provider>
