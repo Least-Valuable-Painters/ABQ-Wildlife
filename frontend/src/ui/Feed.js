@@ -44,7 +44,7 @@ export function Feed() {
 
     return (
         <>
-            <ScratchMap/>
+            {locations.length && images.length && <ScratchMap images={images} locations={locations}/>}
             {images.length && locations.map(location => (
                   <Carousel id={location.locationId} key={location.locationId} activeIndex={index[location.locationId]} onSelect={handleSelect} interval={null} className="mx-auto carousels">
                       {images.filter(image => image.imageLocationId === location.locationId).map(image => (

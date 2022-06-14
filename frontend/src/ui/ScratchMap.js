@@ -1,16 +1,48 @@
-import React from "react";
+import React, {useState} from "react";
 import './map.css'
-import Map from "react-map-gl";
-import {Pin} from "./Pin";
+import Map, {Marker, Popup} from "react-map-gl";
 
 
-export const ScratchMap = () => {
-    const [points] = React.useState([
-        {lat: 34.761992, lng: -107.9322794},
-        {lat: 33.1070159, lng: -107.8555932},
-        {lat: 35.0222704, lng: -106.3536358},
-        {lat: 36.7639184, lng: -105.3527816}
-    ])
+
+export const ScratchMap = ({locations, images}) => {
+    const [popupInfo, setPopupInfo] = useState(null);
+    function Pin(props) {
+        const {index, location} = props
+        const lat=location.locationLat
+        const lng=location.locationLng
+
+        const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
+  c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9
+  C20.1,15.8,20.2,15.8,20.2,15.7z`;
+
+        const SIZE = 20;
+
+        return(
+            <Marker key={`marker-${index}`} longitude={lng} latitude={lat}>
+                <svg
+                    height={SIZE}
+                    viewBox="0 0 24 24"
+                    style={{
+                        cursor: 'pointer',
+                        fill: '#01C5FF',stroke: 'none',
+                        transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
+                    }}
+                    onClick={e => {
+                        // If we let the click event propagates to the map, it will immediately close the popup
+                        // with `closeOnClick: true`
+                        e.stopPropagation();
+                        setPopupInfo(location);
+                    }}
+                >
+                    <path d={ICON} />}
+                </svg>
+            </Marker>
+        )
+
+    }
+
+
+    console.log("locationsInScratchMap", locations)
 
     return (
         <>
@@ -29,8 +61,27 @@ export const ScratchMap = () => {
 
 
                             {
-                                points.map((point, index)  => <Pin lat={point.lat} lng={point.lng} index={index} key={index}/>)
+                                locations.map((location, index)  => <Pin location={location} index={index} key={index}/>)
                             }
+                            {popupInfo && (
+                                <Popup
+                                    anchor="top"
+                                    longitude={Number(popupInfo.locationLng)}
+                                    latitude={Number(popupInfo.locationLat)}
+                                    onClose={() => setPopupInfo(null)}
+                                >
+                                    <div>
+                                        {popupInfo.locationName}
+                                        {/*<a*/}
+                                        {/*    target="_new"*/}
+                                        {/*    href={`#${popupInfo.locationId}`}*/}
+                                        {/*>*/}
+                                        {/*    {popupInfo.locationName} images*/}
+                                        {/*</a>*/}
+                                    </div>
+                                    {images.find(image=>image.imageLocationId === popupInfo.locationId) && <img alt={popupInfo.locationName} width="100%" src={images.find(image=>image.imageLocationId === popupInfo.locationId).imageUrl} />}
+                                </Popup>
+                            )}
 
                         </Map>
                     </div>
