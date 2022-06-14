@@ -16,6 +16,7 @@ import {Image} from "./UploadImages/Image";
 
 export const App = (store) => (
     <>
+
         <Provider store={store}>
             <BrowserRouter>
                 <Navbar/>
@@ -30,5 +31,6 @@ export const App = (store) => (
                 </Routes>
             </BrowserRouter>
         </Provider>
+
     </>
 )
