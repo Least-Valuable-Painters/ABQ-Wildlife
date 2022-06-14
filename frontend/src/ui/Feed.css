@@ -1,5 +1,5 @@
 .carousel {
-    overflow: hidden;
+    /*overflow: hidden;*/
     margin-top: 20vh;
 }
 
@@ -7,16 +7,17 @@
     white-space: nowrap;
 }
 
-.carousel-item {
+.carousels {
     /*display: inline-flex;*/
     /*align-items: center;*/
     /*!*justify-content: center;*!*/
     height: 100%;
+    width: 70%;
     background-color: green;
     color: white;
 }
 
-#carousel1 {
+#location.locationId {
     display: flex;
     width: 100vh;
     /*justify-content: center;*/
