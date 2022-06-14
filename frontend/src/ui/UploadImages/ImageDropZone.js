@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
-import "../../upload.css"
+import "./Upload.css"
 
 export function ImageDropZone({formikProps}) {
 
@@ -28,12 +28,13 @@ export function ImageDropZone({formikProps}) {
                 />
                 {
                     isDragActive ?
-                        <div className="text-center p-3 my-3 uploadText bg-primary rounded">
+
+                        <div className="p-3 my-3 uploadText bg-primary rounded">
                             <h1><strong>Upload</strong></h1>
                             <p className="my-4">Choose a file to upload from your computer or drag and drop it here.</p>
                         </div>
                         :
-                        <div className="text-center p-3 my-3 uploadHeader bg-primary rounded">
+                        <div className="p-3 my-3 uploadText bg-primary rounded">
                             <h1><strong>Upload</strong></h1>
                             <p className="my-4">Choose a file to upload from your computer or drag and drop it here.</p>
                         </div>
