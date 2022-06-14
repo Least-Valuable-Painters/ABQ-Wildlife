@@ -80,12 +80,10 @@ export function ImageUploader(props) {
                             <Container className="uploadBody">
                                 <Container>
                                     <Row>
-                                        <Col xs={0} md={1} lg={3}>
+                                        <Col>
 
-                                        </Col>
-                                        <Col xs={12} md={10} lg={6}>
-
-                                            <form className="formContainer bg-primary rounded-3 w-100" onSubmit={handleSubmit}>
+                                            <form className="formContainer bg-primary rounded-3"
+                                                  onSubmit={handleSubmit}>
                                                 <ImageDropZone
                                                     formikProps={{
                                                         values,
@@ -96,22 +94,22 @@ export function ImageUploader(props) {
                                                     }}
                                                 />
                                                 <Row className="m-3">
-                                                    <Col lg={3} md={5} sm={6}>
                                                         <label htmlFor="locationForm" className="labelItem"/>
                                                         Location:
-                                                    </Col>
-                                                    <Col lg={9} md={7} sm={6}>
                                                         {/*<input id="locationForm" type="select" name="locationForm"*/}
                                                         {/*       placeholder="Location"*/}
                                                         {/*       aria-label="locationForm"/>*/}
-                                                        <select name="imageLocationId" className="form-select" onBlur={handleBlur} onChange={handleChange} value={values.locationId}
+                                                        <select name="imageLocationId" className="form-select"
+                                                                onBlur={handleBlur} onChange={handleChange}
+                                                                value={values.locationId}
                                                                 id="imageLocationId">
                                                             {/*{console.log(locations)}*/}
-                                                          <option value="" disabled selected>Select a location</option>
+                                                            <option value="" disabled selected>Select a location
+                                                            </option>
                                                             {locations.map(location => <option
-                                                                value={location.locationId} key={location.locationId}>{location.locationName}</option>)}
+                                                                value={location.locationId}
+                                                                key={location.locationId}>{location.locationName}</option>)}
                                                         </select>
-                                                    </Col>
                                                 </Row>
                                                 <div className="text-center m-3">
                                                     <button type="submit" className="btn btn-primary">Upload Picture
@@ -119,13 +117,8 @@ export function ImageUploader(props) {
                                                 </div>
 
 
-
-
                                             </form>
                                             <FormDebugger {...props}/>
-
-                                        </Col>
-                                        <Col xs={0} md={1} lg={12}>
 
                                         </Col>
                                     </Row>
