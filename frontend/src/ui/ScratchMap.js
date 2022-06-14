@@ -1,6 +1,4 @@
 import React from "react";
-import {Navbar} from "./Navbar";
-import {Col, Container, Row} from "react-bootstrap";
 import './map.css'
 import Map from "react-map-gl";
 import {Pin} from "./Pin";
@@ -16,20 +14,17 @@ export const ScratchMap = () => {
 
     return (
         <>
-            <Navbar/>
-            <h1>Home</h1>
+            <h1>Map</h1>
 
-            <Container className="map-wrapper">
-                <Row className="justify-content-center">
-                    <Col>
+                    <div>
                         <h2>Find your favorite landscape on the map</h2>
-                        <Map
+                        <Map style={{border: "15px solid grey", display: "block", margin: "0 auto", width: "55vw", height: "75vh"}}
                             initialViewState={{
                                 latitude: 35.106766,
                                 longitude: -106.629181,
                                 zoom: 9
                             }}
-                            style={{width: 700, height: 600}}
+
                             mapboxAccessToken={'pk.eyJ1IjoibWp3MDQyNiIsImEiOiJjbDQ0cHV4ZWwwNnZrM21senNsd3B2bTlqIn0.z4F_9ytktrApsau0IDiSNQ'}
                             mapStyle="mapbox://styles/mapbox/outdoors-v11">
 
@@ -37,9 +32,7 @@ export const ScratchMap = () => {
                                 points.map((point, index)  => <Pin lat={point.lat} lng={point.lng} index={index} key={index}/>)
                             }
                         </Map>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
         </>
     )
 }

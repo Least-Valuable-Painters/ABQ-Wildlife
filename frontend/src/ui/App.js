@@ -14,10 +14,10 @@ export const App = () => (
     <>
         <BrowserRouter>
             <Routes>
-                <Route  path='/home' element={<Home />} />
+                {/*<Route  path='/home' element={<Home />} />*/}
                 <Route path='/four' element={<FourOhFour />} />
                 <Route path='/favorite' element={<ClickFavorite />} />
-                <Route path='/favnav' element={<Navbar />} />
+                {/*<Route path='/favnav' element={<Navbar />} />*/}
                 <Route path='/map' element={<ScratchMap />} />
 
             </Routes>
