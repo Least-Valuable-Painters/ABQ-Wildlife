@@ -79,7 +79,7 @@ export function ImageUploader(props) {
                     return (
                         <>
                             <Container className="d-flex justify-content-center">
-                                <form className="bg-primary rounded-3"
+                                <form className="bg-dark rounded-3 formContainer"
                                       onSubmit={handleSubmit}>
                                     <ImageDropZone
                                         formikProps={{
@@ -114,7 +114,7 @@ export function ImageUploader(props) {
                                     </div>
                                 </form>
                             </Container>
-                            <FormDebugger {...props}/>
+                            {/*<FormDebugger {...props}/>*/}
                         </>
                     )
                 }
