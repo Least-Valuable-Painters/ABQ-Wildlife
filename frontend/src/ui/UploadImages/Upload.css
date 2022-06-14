@@ -1,0 +1,11 @@
+.formContainer {
+    margin: auto;
+}
+
+.uploadText {
+    color: white;
+}
+
+.uploadBackgroundImage {
+    background: url("../../img/Mtns.jpg") no-repeat ;
+}

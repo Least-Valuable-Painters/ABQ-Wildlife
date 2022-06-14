@@ -4,8 +4,9 @@ import {Formik, FormikConsumer} from "formik";
 import {httpConfig} from "../shared/utils/httpConfig";
 import {values} from "lodash";
 import {Col, Container, Row} from "react-bootstrap";
-import {ImageDropZone} from "../shared/components/ImageDropZone";
+import {ImageDropZone} from "./ImageDropZone";
 import {FormDebugger} from "../shared/components/FormDebugger";
+import "./Upload.css"
 
 
 export function ImageUploader(props) {
@@ -77,53 +78,43 @@ export function ImageUploader(props) {
 
                     return (
                         <>
-                            <Container className="uploadBody">
-                                <Container>
-                                    <Row>
-                                        <Col>
-
-                                            <form className="formContainer bg-primary rounded-3"
-                                                  onSubmit={handleSubmit}>
-                                                <ImageDropZone
-                                                    formikProps={{
-                                                        values,
-                                                        handleChange,
-                                                        handleBlur,
-                                                        setFieldValue,
-                                                        fieldValue: "imageUrl"
-                                                    }}
-                                                />
-                                                <Row className="m-3">
-                                                        <label htmlFor="locationForm" className="labelItem"/>
-                                                        Location:
-                                                        {/*<input id="locationForm" type="select" name="locationForm"*/}
-                                                        {/*       placeholder="Location"*/}
-                                                        {/*       aria-label="locationForm"/>*/}
-                                                        <select name="imageLocationId" className="form-select"
-                                                                onBlur={handleBlur} onChange={handleChange}
-                                                                value={values.locationId}
-                                                                id="imageLocationId">
-                                                            {/*{console.log(locations)}*/}
-                                                            <option value="" disabled selected>Select a location
-                                                            </option>
-                                                            {locations.map(location => <option
-                                                                value={location.locationId}
-                                                                key={location.locationId}>{location.locationName}</option>)}
-                                                        </select>
-                                                </Row>
-                                                <div className="text-center m-3">
-                                                    <button type="submit" className="btn btn-primary">Upload Picture
-                                                    </button>
-                                                </div>
-
-
-                                            </form>
-                                            <FormDebugger {...props}/>
-
-                                        </Col>
-                                    </Row>
-                                </Container>
+                            <Container className="d-flex justify-content-center">
+                                <form className="bg-primary rounded-3"
+                                      onSubmit={handleSubmit}>
+                                    <ImageDropZone
+                                        formikProps={{
+                                            values,
+                                            handleChange,
+                                            handleBlur,
+                                            setFieldValue,
+                                            fieldValue: "imageUrl"
+                                        }}
+                                    />
+                                    <Container className="px-5">
+                                        <label htmlFor="locationForm" className="labelItem"/>
+                                        <div className="uploadText text-center">Location:</div>
+                                        {/*<input id="locationForm" type="select" name="locationForm"*/}
+                                        {/*       placeholder="Location"*/}
+                                        {/*       aria-label="locationForm"/>*/}
+                                        <select name="imageLocationId" className="form-select"
+                                                onBlur={handleBlur} onChange={handleChange}
+                                                value={values.locationId}
+                                                id="imageLocationId">
+                                            {/*{console.log(locations)}*/}
+                                            <option value="" disabled selected>Select a location
+                                            </option>
+                                            {locations.map(location => <option
+                                                value={location.locationId}
+                                                key={location.locationId}>{location.locationName}</option>)}
+                                        </select>
+                                    </Container>
+                                    <div className="text-center m-3">
+                                        <button type="submit" className="btn btn-primary">Upload Picture
+                                        </button>
+                                    </div>
+                                </form>
                             </Container>
+                            <FormDebugger {...props}/>
                         </>
                     )
                 }
