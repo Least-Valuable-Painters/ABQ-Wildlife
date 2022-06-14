@@ -27,28 +27,28 @@ export const ClickFavorite = () => {
                         Midnight Meadows
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="secondary" action href="#link5">
-                            Empty Location-1
+                            Limestone Canyon
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="light" action href="#link6">
-                            Empty Location-2
+                            Valle Vidal
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="secondary" action href="#link7">
-                            Empty Location-3
+                            Valles Caldera
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="light" action href="#link8">
-                            Empty Location-4
+                            Rio Mora
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="secondary" action href="#link9">
-                            Empty Location-5
+                            Fort Union
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="light" action href="#link10">
-                            Empty Location-6
+                            Valle De Oro
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="secondary" action href="#link11">
-                            Empty Location-7
+                            Quivira Coalitions's Red Canyon Reserve
                         </ListGroup.Item>
                         <ListGroup.Item className="list-group-item" variant="light" action href="#link12">
-                            Empty Location-8
+                            Wolf Creek
                         </ListGroup.Item>
                     </ListGroup>
 
