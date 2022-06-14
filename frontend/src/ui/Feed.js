@@ -2,39 +2,32 @@ import React, {useEffect, useState} from 'react';
 import {Carousel} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Feed.css"
-// import jpg from "./feed-images/cedro-creek-1.jpg"
-// import img from "./feed-images/cedro-creek-2.jpg"
-// import jpg2 from "./feed-images/cedro-creek-3.jpg"
-// import jpg3 from "./feed-images/Aldo-1.jpg"
-// import jpg4 from "./feed-images/Aldo-2.jpg"
-// import jpg5 from "./feed-images/Aldo-3.jpg"
-// import jpg6 from "./feed-images/Cebolla-1.jpg"
-// import jpg7 from "./feed-images/Cebolla-2.jpg"
-// import jpg8 from "./feed-images/Cebolla-3.jpg"
-// import jpg9 from "./feed-images/Midnight-1.jpg"
-// import jpg10 from "./feed-images/Midnight-2.jpg"
-// import jpg11 from "./feed-images/Midnight-3.jpg"
-// import {Navbar} from "./shared/components/usernav/UserNav";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import {ScratchMap} from "./ScratchMap";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllLocations} from "../store/location";
 import {fetchAllImages} from "../store/image";
+import {FavoriteButton} from "./FavoriteButton";
+import {fetchAuth} from "../store/auth";
+import {fetchFavoritesByFavoriteUserId} from "../store/favorite";
 
 export function Feed() {
-
+    const favorites = useSelector(state => state.favorite ? state.favorite : []);
+    const auth = useSelector(state => state.auth);
     const locations = useSelector(state => state.location ? state.location : []);
     const images = useSelector(state => state.image ? state.image : []);
     const dispatch = useDispatch();
     const effects = () => {
         dispatch(fetchAllLocations())
         dispatch(fetchAllImages())
+        dispatch(fetchAuth())
     };
     const inputs = [dispatch];
     useEffect(effects, inputs);
     console.log(locations)
     console.log(images)
-
+    console.log(auth)
+    console.log(favorites)
 
     const [index, setIndex] = useState({});
 
@@ -46,7 +39,8 @@ export function Feed() {
         <>
             <ScratchMap/>
             {images.length && locations.map(location => (
-                  <Carousel id={location.locationId} key={location.locationId} activeIndex={index[location.locationId]} onSelect={handleSelect} interval={null} className="mx-auto carousels">
+                  <>
+                      <Carousel id={location.locationId} key={location.locationId} activeIndex={index[location.locationId]} onSelect={handleSelect} interval={null} className="mx-auto carousels">
                       {images.filter(image => image.imageLocationId === location.locationId).map(image => (
                         <Carousel.Item key={image.imageId}>
                             <img
@@ -62,7 +56,12 @@ export function Feed() {
                       ))}
 
                   </Carousel>
-            ))}
+                <FavoriteButton auth={auth} location={location}/>
+                      </>
+            ))
+
+                }
+
                 {/*<Carousel id="carousel1" activeIndex={index} onSelect={handleSelect} className="mx-auto">*/}
                 {/*    <Carousel.Item>*/}
                 {/*        <img*/}

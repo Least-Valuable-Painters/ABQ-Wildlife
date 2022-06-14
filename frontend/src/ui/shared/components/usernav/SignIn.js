@@ -102,7 +102,7 @@ function PostSignInContent (props) {
         <Button onClick={handleSubmit} className="mt-3" variant="primary">Sign In</Button>
       </Form>
       <DisplayStatus status={status}/>
-      <FormDebugger {...props} />
+      {/*<FormDebugger {...props} />*/}
     </>
   )
 }
