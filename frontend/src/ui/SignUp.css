@@ -1,0 +1,15 @@
+.signUpBackground {
+    background: url("../img/14-wolf-full.jpg") no-repeat;
+}
+
+.signUpForm {
+    color: white;
+    padding: 2rem 5rem 3rem;
+    max-width: 60vw;
+    opacity: 0.9;
+}
+
+.innerSignUpForm {
+    background-color: #01C5FF !important;
+    padding: 3rem;
+}
