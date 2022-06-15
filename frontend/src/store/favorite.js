@@ -17,6 +17,7 @@ export default favoriteSlice.reducer
 
 // create an export to allow async calls to our action
 export const fetchFavoritesByFavoriteUserId = (id) => async dispatch => {
+    console.log(id)
     const {data} = await httpConfig(`/apis/favorite/favoriteUserId/${id}`)
     const favoritesDictionary = data.reduce((accumulator, currentValue) => {
         accumulator[currentValue.favoriteLocationId] = currentValue

@@ -24,7 +24,7 @@ export const App = (store) => (
                     {/*<Route path='/favnav' element={<Navbar/>}/>*/}
                     {/*<Route path='/map' element={<ScratchMap/>}/>*/}
                     <Route path='/' element={<Feed/>}/>
-                    <Route path='/favorite' element={<ClickFavorite/>}/>
+                    <Route path='/favorite/:favoriteUserId' element={<ClickFavorite/>} favoriteUserId=":favoriteUserId"/>
                     <Route path='/upload' element={<Image/>}/>
                     <Route path='/user' element={<SignUp/>}/>
                     <Route path='*' element={<FourOhFour/>}/>
