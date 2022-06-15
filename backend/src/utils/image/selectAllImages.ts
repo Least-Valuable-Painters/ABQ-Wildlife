@@ -8,6 +8,7 @@ export async function selectAllImages() : Promise<Image[]> {
         const mySqlConnection = await connect()
         const mySqlQuery = 'SELECT BIN_TO_UUID (imageId) AS imageId, BIN_TO_UUID (imageUserId) AS imageUserId, BIN_TO_UUID (imageLocationId) AS imageLocationId, imageCloudinaryId, imageDateCreated, imageUrl FROM image'
         const result = await mySqlConnection.execute(mySqlQuery) as RowDataPacket[]
+        mySqlConnection.release()
         return result[0] as Array<Image>
     } catch (error) {
         throw error

@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import jwtDecode from "jwt-decode";
+import {fetchFavoritesByFavoriteUserId} from "./favorite";
 
 
 const slice = createSlice({
@@ -24,6 +25,7 @@ export const fetchAuth = () => async (dispatch, getState) => {
             decodedToken = null
         }
         dispatch(getAuth(decodedToken))
+
     }
 };
 

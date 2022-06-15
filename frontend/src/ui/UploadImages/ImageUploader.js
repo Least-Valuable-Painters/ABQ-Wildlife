@@ -122,7 +122,7 @@ export function ImageUploader(props) {
 
 
                                             </form>
-                                            <FormDebugger {...props}/>
+                                            {/*<FormDebugger {...props}/>*/}
 
                                         </Col>
                                         <Col xs={0} md={1} lg={12}>

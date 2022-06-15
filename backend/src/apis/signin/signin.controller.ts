@@ -23,13 +23,11 @@ function signInFailed (response: Response): Response {
 }
 
 function signInSuccessful (request: Request, response: Response, user: User): Response {
-    const { userId, userActivationToken, userEmail, userHash, userIsAdmin, userName } = user
+    const { userId, userEmail, userIsAdmin, userName } = user
     const signature: string = uuid()
     const authorization: string = generateJwt({
         userId,
-        userActivationToken,
         userEmail,
-        userHash,
         userIsAdmin,
         userName
     }, signature)
