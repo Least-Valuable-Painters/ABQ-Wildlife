@@ -16,10 +16,20 @@
 }
 
 .navLinks {
+    background-color: #01C5FF !important;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     font-size: large;
+    color: #006f91;
+}
+
+.navLinks:hover {
+    background-color: #0066aa !important;
     color: white;
+}
+
+.navLinks:active {
+    background-color: #00485e !important;
 }
 
 @media screen and (max-width:768px) {
