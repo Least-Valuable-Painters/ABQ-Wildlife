@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as Yup from 'yup'
 import {Formik, FormikConsumer} from "formik";
 import {httpConfig} from "../shared/utils/httpConfig";
 import {values} from "lodash";
 import {Col, Container, Row} from "react-bootstrap";
-import {ImageDropZone} from "../shared/components/ImageDropZone";
+import {ImageDropZone} from "./ImageDropZone";
 import {FormDebugger} from "../shared/components/FormDebugger";
+import "./Upload.css"
 
 
 export function ImageUploader(props) {
+
+    const [selectedImage, setSelectedImage] = useState(null)
 
     const {imageUserId, locations} = props
     console.log(imageUserId)
@@ -77,60 +80,48 @@ export function ImageUploader(props) {
 
                     return (
                         <>
-                            <Container className="uploadBody">
-                                <Container>
-                                    <Row>
-                                        <Col xs={0} md={1} lg={3}>
+                            <Container className="mx-auto d-flex justify-content-center">
+                                <form className="bg-dark rounded-3 formContainer"
+                                      onSubmit={handleSubmit}>
+                                    <ImageDropZone
+                                        formikProps={{
+                                            values,
+                                            handleChange,
+                                            handleBlur,
+                                            setFieldValue,
+                                            fieldValue: "imageUrl",
+                                            setSelectedImage: setSelectedImage
+                                        }}
 
-                                        </Col>
-                                        <Col xs={12} md={10} lg={6}>
-
-                                            <form className="formContainer bg-primary rounded-3 w-100" onSubmit={handleSubmit}>
-                                                <ImageDropZone
-                                                    formikProps={{
-                                                        values,
-                                                        handleChange,
-                                                        handleBlur,
-                                                        setFieldValue,
-                                                        fieldValue: "imageUrl"
-                                                    }}
-                                                />
-                                                <Row className="m-3">
-                                                    <Col lg={3} md={5} sm={6}>
-                                                        <label htmlFor="locationForm" className="labelItem"/>
-                                                        Location:
-                                                    </Col>
-                                                    <Col lg={9} md={7} sm={6}>
-                                                        {/*<input id="locationForm" type="select" name="locationForm"*/}
-                                                        {/*       placeholder="Location"*/}
-                                                        {/*       aria-label="locationForm"/>*/}
-                                                        <select name="imageLocationId" className="form-select" onBlur={handleBlur} onChange={handleChange} value={values.locationId}
-                                                                id="imageLocationId">
-                                                            {/*{console.log(locations)}*/}
-                                                          <option value="" disabled selected>Select a location</option>
-                                                            {locations.map(location => <option
-                                                                value={location.locationId} key={location.locationId}>{location.locationName}</option>)}
-                                                        </select>
-                                                    </Col>
-                                                </Row>
-                                                <div className="text-center m-3">
-                                                    <button type="submit" className="btn btn-primary">Upload Picture
-                                                    </button>
-                                                </div>
-
-
-
-
-                                            </form>
-                                            <FormDebugger {...props}/>
-
-                                        </Col>
-                                        <Col xs={0} md={1} lg={12}>
-
-                                        </Col>
-                                    </Row>
-                                </Container>
+                                    />
+                                    <div className="selectedImage mx-auto d-flex align-content-center">
+                                        {selectedImage !== null ? <img src={selectedImage} className="img-fluid"/> : ""}
+                                    </div>
+                                    <Container className="px-5">
+                                        <label htmlFor="locationForm" className="labelItem"/>
+                                        <div className="uploadText text-center">Location:</div>
+                                        {/*<input id="locationForm" type="select" name="locationForm"*/}
+                                        {/*       placeholder="Location"*/}
+                                        {/*       aria-label="locationForm"/>*/}
+                                        <select name="imageLocationId" className="form-select"
+                                                onBlur={handleBlur} onChange={handleChange}
+                                                value={values.locationId}
+                                                id="imageLocationId">
+                                            {/*{console.log(locations)}*/}
+                                            <option value="" disabled selected>Select a location
+                                            </option>
+                                            {locations.map(location => <option
+                                                value={location.locationId}
+                                                key={location.locationId}>{location.locationName}</option>)}
+                                        </select>
+                                    </Container>
+                                    <div className="text-center m-3">
+                                        <button type="submit" className="btn btn-primary">Upload Picture
+                                        </button>
+                                    </div>
+                                </form>
                             </Container>
+                            {/*<FormDebugger {...props}/>*/}
                         </>
                     )
                 }
