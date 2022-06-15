@@ -116,7 +116,7 @@ export function ImageUploader(props) {
                                         </select>
                                     </Container>
                                     <div className="text-center m-3">
-                                        <button type="submit" className="btn btn-primary">Upload Picture
+                                        <button type="submit" className="btn uploadButton">Upload Picture
                                         </button>
                                     </div>
                                 </form>

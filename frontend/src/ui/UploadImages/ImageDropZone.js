@@ -35,12 +35,12 @@ export function ImageDropZone({formikProps}) {
                 {
                     isDragActive ?
 
-                        <div className="p-3 my-3 uploadText bg-primary rounded">
+                        <div className="p-3 my-3 uploadText uploadModule rounded text-light">
                             <h1><strong>Upload</strong></h1>
                             <p className="my-4">Choose a file to upload from your computer or drag and drop it here.</p>
                         </div>
                         :
-                        <div className="p-3 my-3 uploadText bg-primary rounded">
+                        <div className="p-3 my-3 uploadText uploadModule rounded text-light">
                             <h1><strong>Upload</strong></h1>
                             <p className="my-4">Choose a file to upload from your computer or drag and drop it here.</p>
                         </div>

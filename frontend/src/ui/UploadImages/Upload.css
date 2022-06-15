@@ -4,13 +4,34 @@
     padding: 3rem;
 }
 
+.uploadBackgroundImage {
+    background: url("../../img/Mtns.jpg") no-repeat ;
+    min-height: 100vh;
+}
+
+.uploadModule {
+    background-color: #01C5FF;
+}
+
+.uploadModule:hover {
+    background-color: #0090d3;
+}
+
 .uploadText {
     color: white;
 }
 
-.uploadBackgroundImage {
-    background: url("../../img/Mtns.jpg") no-repeat ;
-    min-height: 100vh;
+.uploadButton {
+    background-color: #01C5FF;
+}
+
+.uploadButton:hover {
+    background-color: #0066aa !important;
+    color: white;
+}
+
+.uploadButton:active {
+    background-color: #00485e !important;
 }
 
 .selectedImage {
