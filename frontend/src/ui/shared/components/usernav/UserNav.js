@@ -8,7 +8,6 @@ import {SignIn} from "./SignIn";
 export const Navbar = () => {
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -20,16 +19,18 @@ export const Navbar = () => {
 
             <Offcanvas show={show} className="navbar-body" onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Sign In</Offcanvas.Title>
+                    <Offcanvas.Title>
+
+                    </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body className="p-0">
-                    <Container>
-                        <Row>
-                            <Col>
-                                <SignIn/>
-                            </Col>
-                        </Row>
-                    </Container>
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <SignIn/>
+                                </Col>
+                            </Row>
+                        </Container>
                     <Container className="navLinkBody">
                         <Nav.Link className="navLinks" href="/">Feed</Nav.Link>
                         <Nav.Link className="navLinks" href="/favorite">Favorites</Nav.Link>
