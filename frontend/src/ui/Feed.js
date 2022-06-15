@@ -59,7 +59,7 @@ export function Feed() {
                             ))}
                         </Carousel>
 
-                        <div className="favButton text-center bg-dark py-1">
+                        <div className="favButton text-center">
                         {auth !== null && <FavoriteButton auth={auth} location={location}/>}
                         </div>
 
