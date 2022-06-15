@@ -10,6 +10,7 @@ export async function selectUserByUserActivationToken(userActivationToken: strin
         const mysqlQuery: string = "SELECT BIN_TO_UUID(userId) as userId, userName, userEmail FROM user WHERE userActivationToken =  userActivationToken"
         const result = await mysqlConnection.execute(mysqlQuery, {userActivationToken}) as RowDataPacket[]
         const rows: User[] = result[0] as User[]
+        mysqlConnection.release()
         return rows.length === 1 ? {...rows[0]} : null;
     } catch (error) {
         throw error

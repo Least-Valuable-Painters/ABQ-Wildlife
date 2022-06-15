@@ -15,12 +15,14 @@ export async function toggleFavorite(favorite: Favorite) : Promise<string> {
             const mySqlDelete = 'DELETE FROM `favorite` WHERE favoriteLocationId = UUID_TO_BIN(:favoriteLocationId) AND favoriteUserId = UUID_TO_BIN(:favoriteUserId)'
             const [deleteRows] = await mysqlConnection.execute(mySqlDelete, favorite)
             console.log('Favorite has been removed')
+            mysqlConnection.release()
 
         }else {
             const mysqlConnection = await connect()
             const mySqlQuery = 'INSERT INTO `favorite`(favoriteLocationId, favoriteUserId) VALUES (UUID_TO_BIN(:favoriteLocationId), UUID_TO_BIN(:favoriteUserId))';
             const [rows] = await mysqlConnection.execute(mySqlQuery, favorite)
             console.log('Favorite has been saved')
+            mysqlConnection.release()
         }
 
         return "Favorite toggled successfully"

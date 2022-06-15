@@ -6,6 +6,7 @@ export async function deleteFavorite(favorite: Favorite) {
         const mysqlConnection = await connect()
         const mysqlDelete = 'DELETE FROM `favorite` WHERE favoriteLocationId = UUID_TO_BIN(:favoriteLocationId) AND favoriteUserId = UUID_TO_BIN(:favoriteUserId)'
         const [result] = await mysqlConnection.execute(mysqlDelete, favorite)
+        mysqlConnection.release()
         return "Favorite successfully deleted"
     } catch (error) {
         throw error
