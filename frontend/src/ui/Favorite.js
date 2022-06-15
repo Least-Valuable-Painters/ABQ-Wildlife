@@ -8,9 +8,8 @@ export const ClickFavorite = () => {
 
     return (
         <>
-            <Container className="background">
-                <Row className="favorites-row">
-
+            <div className="favoriteBackground container-fluid">
+                <Container className="favoriteModule bg-dark">
                     <h1>Favorites</h1>
 
                     <ListGroup className="list-group list-group-hover" defaultActiveKey="#link1">
@@ -51,9 +50,8 @@ export const ClickFavorite = () => {
                             Wolf Creek
                         </ListGroup.Item>
                     </ListGroup>
-
-                </Row>
-            </Container>
+                </Container>
+            </div>
         </>
     )
 }
