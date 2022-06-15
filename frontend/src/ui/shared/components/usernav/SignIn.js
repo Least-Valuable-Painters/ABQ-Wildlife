@@ -9,9 +9,11 @@ import {DisplayStatus} from "../DisplayStatus";
 import {FormDebugger} from "../FormDebugger";
 import jwtDecode from "jwt-decode";
 import {getAuth} from "../../../../store/auth";
+import {useNavigate} from "react-router-dom"
+
 
 export function SignIn() {
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const validator = Yup.object().shape({
@@ -33,6 +35,9 @@ export function SignIn() {
             resetForm();
             let jwtToken = jwtDecode(reply.headers["authorization"])
             dispatch(getAuth(jwtToken))
+            setTimeout(() => {
+            window.location.reload()
+            }, 2000)
       }
       setStatus({ message, type });
     });

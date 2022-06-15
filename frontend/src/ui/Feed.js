@@ -56,7 +56,7 @@ export function Feed() {
                       ))}
 
                   </Carousel>
-                      {auth && <FavoriteButton auth={auth} location={location}/>}
+                      {auth !== null && <FavoriteButton auth={auth} location={location}/>}
                       </>
             ))
 
