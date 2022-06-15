@@ -2,6 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {Carousel} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Feed.css"
+import 'mapbox-gl/dist/mapbox-gl.css';
+import {ScratchMap} from "./ScratchMap";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllLocations} from "../store/location";
+import {fetchAllImages} from "../store/image";
+import {fetchAllComments} from "../store/comment";
+import {CommentForm} from "./shared/components/comment/CommentForm"
+import {CommentCard} from "./shared/components/comment/CommentCard"
 // import jpg from "./feed-images/cedro-creek-1.jpg"
 // import img from "./feed-images/cedro-creek-2.jpg"
 // import jpg2 from "./feed-images/cedro-creek-3.jpg"
@@ -15,20 +23,17 @@ import "./Feed.css"
 // import jpg10 from "./feed-images/Midnight-2.jpg"
 // import jpg11 from "./feed-images/Midnight-3.jpg"
 // import {Navbar} from "./shared/components/usernav/UserNav";
-import 'mapbox-gl/dist/mapbox-gl.css';
-import {ScratchMap} from "./ScratchMap";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchAllLocations} from "../store/location";
-import {fetchAllImages} from "../store/image";
 
 export function Feed() {
 
     const locations = useSelector(state => state.location ? state.location : []);
     const images = useSelector(state => state.image ? state.image : []);
+    const comments = useSelector(state => state.comments ? state.comments : []);
     const dispatch = useDispatch();
     const effects = () => {
         dispatch(fetchAllLocations())
         dispatch(fetchAllImages())
+        dispatch(fetchAllComments());
     };
     const inputs = [dispatch];
     useEffect(effects, inputs);
@@ -60,9 +65,11 @@ export function Feed() {
                             </Carousel.Caption>
                         </Carousel.Item>
                       ))}
-
                   </Carousel>
+
             ))}
+            <CommentForm/>
+            {comments.map(comment => <CommentCard comment={comment} key={comment.commentId}/>)}
                 {/*<Carousel id="carousel1" activeIndex={index} onSelect={handleSelect} className="mx-auto">*/}
                 {/*    <Carousel.Item>*/}
                 {/*        <img*/}
