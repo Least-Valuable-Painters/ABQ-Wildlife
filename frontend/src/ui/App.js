@@ -13,13 +13,16 @@ import {Navbar} from "./shared/components/usernav/UserNav";
 import {SignUp} from "./SignUp";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import {Image} from "./UploadImages/Image";
+import "./favorite.css"
 
 export const App = (store) => (
     <>
 
         <Provider store={store}>
             <BrowserRouter>
+                <div className="bg-dark">
                 <Navbar/>
+                </div>
                 <Routes>
                     {/*<Route path='/favnav' element={<Navbar/>}/>*/}
                     {/*<Route path='/map' element={<ScratchMap/>}/>*/}

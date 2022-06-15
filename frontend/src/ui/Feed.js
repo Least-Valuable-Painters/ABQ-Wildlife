@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Carousel} from 'react-bootstrap';
+import {Carousel, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Feed.css"
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -39,66 +39,73 @@ export function Feed() {
         <>
             {locations.length && images.length && <ScratchMap images={images} locations={locations}/>}
             {images.length && locations.map(location => (
-                  <>
-                      <Carousel id={location.locationId} key={location.locationId} activeIndex={index[location.locationId]} onSelect={handleSelect} interval={null} className="mx-auto carousels">
-                      {images.filter(image => image.imageLocationId === location.locationId).map(image => (
-                        <Carousel.Item key={image.imageId}>
-                            <img
-                              className="d-block w-100"
-                              src={image.imageUrl}
-                              alt="Aldo Leopold 1"
-                            />
-                            <Carousel.Caption>
-                                <h3>{location.locationName}</h3>
-                                <p>2009</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                      ))}
+                <>
+                    <Container className="px-5">
+                        <Carousel id={location.locationId} key={location.locationId}
+                                  activeIndex={index[location.locationId]} onSelect={handleSelect} interval={null}
+                                  className="mx-auto carousels">
+                            {images.filter(image => image.imageLocationId === location.locationId).map(image => (
+                                <Carousel.Item key={image.imageId}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={image.imageUrl}
+                                        alt="Aldo Leopold 1"
+                                    />
+                                    <Carousel.Caption>
+                                        <h3>{location.locationName}</h3>
+                                        <p>2009</p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            ))}
+                        </Carousel>
 
-                  </Carousel>
-                      {auth !== null && <FavoriteButton auth={auth} location={location}/>}
-                      </>
+                        <div className="favButton text-center">
+                        {auth !== null && <FavoriteButton auth={auth} location={location}/>}
+                        </div>
+
+                    </Container>
+                </>
             ))
 
-                }
+            }
 
-                {/*<Carousel id="carousel1" activeIndex={index} onSelect={handleSelect} className="mx-auto">*/}
-                {/*    <Carousel.Item>*/}
-                {/*        <img*/}
-                {/*            className="d-block w-100"*/}
-                {/*            src={jpg3}*/}
-                {/*            alt="Aldo Leopold 1"*/}
-                {/*        />*/}
-                {/*        <Carousel.Caption>*/}
-                {/*            <h3>Aldo Leopold Forest</h3>*/}
-                {/*            <p>2009</p>*/}
-                {/*        </Carousel.Caption>*/}
-                {/*    </Carousel.Item>*/}
-                {/*    <Carousel.Item>*/}
-                {/*        <img*/}
-                {/*            className="d-block w-100"*/}
-                {/*            src={jpg4}*/}
-                {/*            alt="Aldo Leopold 2"*/}
-                {/*        />*/}
+            {/*<Carousel id="carousel1" activeIndex={index} onSelect={handleSelect} className="mx-auto">*/}
+            {/*    <Carousel.Item>*/}
+            {/*        <img*/}
+            {/*            className="d-block w-100"*/}
+            {/*            src={jpg3}*/}
+            {/*            alt="Aldo Leopold 1"*/}
+            {/*        />*/}
+            {/*        <Carousel.Caption>*/}
+            {/*            <h3>Aldo Leopold Forest</h3>*/}
+            {/*            <p>2009</p>*/}
+            {/*        </Carousel.Caption>*/}
+            {/*    </Carousel.Item>*/}
+            {/*    <Carousel.Item>*/}
+            {/*        <img*/}
+            {/*            className="d-block w-100"*/}
+            {/*            src={jpg4}*/}
+            {/*            alt="Aldo Leopold 2"*/}
+            {/*        />*/}
 
-                {/*        <Carousel.Caption>*/}
-                {/*            <h3>Aldo Leopold Forest</h3>*/}
-                {/*            <p>2009</p>*/}
-                {/*        </Carousel.Caption>*/}
-                {/*    </Carousel.Item>*/}
-                {/*    <Carousel.Item>*/}
-                {/*        <img*/}
-                {/*            className="d-block w-100"*/}
-                {/*            src={jpg5}*/}
-                {/*            alt="Aldo Leopold 3"*/}
-                {/*        />*/}
+            {/*        <Carousel.Caption>*/}
+            {/*            <h3>Aldo Leopold Forest</h3>*/}
+            {/*            <p>2009</p>*/}
+            {/*        </Carousel.Caption>*/}
+            {/*    </Carousel.Item>*/}
+            {/*    <Carousel.Item>*/}
+            {/*        <img*/}
+            {/*            className="d-block w-100"*/}
+            {/*            src={jpg5}*/}
+            {/*            alt="Aldo Leopold 3"*/}
+            {/*        />*/}
 
-                {/*        <Carousel.Caption>*/}
-                {/*            <h3>Aldo Leopold Forest</h3>*/}
-                {/*            <p>2009</p>*/}
-                {/*        </Carousel.Caption>*/}
-                {/*    </Carousel.Item>*/}
-                {/*</Carousel>*/}
+            {/*        <Carousel.Caption>*/}
+            {/*            <h3>Aldo Leopold Forest</h3>*/}
+            {/*            <p>2009</p>*/}
+            {/*        </Carousel.Caption>*/}
+            {/*    </Carousel.Item>*/}
+            {/*</Carousel>*/}
 
             {/*    <Carousel id="carousel2" className="mx-auto">*/}
             {/*        <Carousel.Item>*/}

@@ -31,7 +31,7 @@ export const Navbar = () => {
 
             {/*    return (*/}
             {/*        <>*/}
-            <Button className="menu-button" variant="secondary" onClick={handleShow}>
+            <Button className="menu-button btn-lg btn-dark" onClick={handleShow}>
                 Navigation
             </Button>
 

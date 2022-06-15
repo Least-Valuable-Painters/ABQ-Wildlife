@@ -1,6 +1,7 @@
 .signUpBackground {
     background: url("../img/14-wolf-full.jpg") no-repeat;
     padding-bottom: 5rem;
+    min-height: 100vh;
 }
 
 .signUpForm {
