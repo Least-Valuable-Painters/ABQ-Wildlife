@@ -4,19 +4,25 @@ import {httpConfig} from '../ui/shared/utils/httpConfig'
 // Define our reducer and action
 const favoriteSlice = createSlice({
     name: 'favorite',
-    initialState: [],
+    initialState: {},
     reducers: {
-        setFavoritesByUserId: (favorite, action) => action.payload
+        setFavorites: (favorite, action) => action.payload
     }
 })
 
 // Make our actions callable as function setAllLocations
-export const {setFavoritesByUserId} = favoriteSlice.actions
+export const {setFavorites} = favoriteSlice.actions
 
 export default favoriteSlice.reducer
 
 // create an export to allow async calls to our action
 export const fetchFavoritesByFavoriteUserId = (id) => async dispatch => {
     const {data} = await httpConfig(`/apis/favorite/favoriteUserId/${id}`)
-    dispatch(setFavoritesByUserId(data))
+    const favoritesDictionary = data.reduce((accumulator, currentValue) => {
+        accumulator[currentValue.favoriteLocationId] = currentValue
+        return accumulator
+    },
+      {}
+    )
+    dispatch(setFavorites(favoritesDictionary))
 }

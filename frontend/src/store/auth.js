@@ -27,7 +27,6 @@ export const fetchAuth = () => async (dispatch, getState) => {
         dispatch(getAuth(decodedToken))
 
     }
-    dispatch(fetchFavoritesByFavoriteUserId(state.auth.userId))
 };
 
 export default slice.reducer

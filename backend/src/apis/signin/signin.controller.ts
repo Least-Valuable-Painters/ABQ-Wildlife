@@ -27,9 +27,9 @@ function signInSuccessful (request: Request, response: Response, user: User): Re
     const signature: string = uuid()
     const authorization: string = generateJwt({
         userId,
-        userActivationToken,
+
         userEmail,
-        userHash,
+
         userIsAdmin,
         userName
     }, signature)
