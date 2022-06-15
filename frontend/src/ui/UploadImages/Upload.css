@@ -12,3 +12,7 @@
     background: url("../../img/Mtns.jpg") no-repeat ;
     min-height: 100vh;
 }
+
+.selectedImage {
+    max-width: 45vw;
+}

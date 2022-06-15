@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as Yup from 'yup'
 import {Formik, FormikConsumer} from "formik";
 import {httpConfig} from "../shared/utils/httpConfig";
@@ -10,6 +10,8 @@ import "./Upload.css"
 
 
 export function ImageUploader(props) {
+
+    const [selectedImage, setSelectedImage] = useState(null)
 
     const {imageUserId, locations} = props
     console.log(imageUserId)
@@ -78,7 +80,7 @@ export function ImageUploader(props) {
 
                     return (
                         <>
-                            <Container className="d-flex justify-content-center">
+                            <Container className="mx-auto d-flex justify-content-center">
                                 <form className="bg-dark rounded-3 formContainer"
                                       onSubmit={handleSubmit}>
                                     <ImageDropZone
@@ -87,9 +89,14 @@ export function ImageUploader(props) {
                                             handleChange,
                                             handleBlur,
                                             setFieldValue,
-                                            fieldValue: "imageUrl"
+                                            fieldValue: "imageUrl",
+                                            setSelectedImage: setSelectedImage
                                         }}
+
                                     />
+                                    <div className="selectedImage mx-auto d-flex align-content-center">
+                                        {selectedImage !== null ? <img src={selectedImage} className="img-fluid"/> : ""}
+                                    </div>
                                     <Container className="px-5">
                                         <label htmlFor="locationForm" className="labelItem"/>
                                         <div className="uploadText text-center">Location:</div>
