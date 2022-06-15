@@ -62,7 +62,7 @@ export function SignIn() {
 function PostSignInContent(props) {
     //console.log("userName, userPassword")
     const [show, setShow] = useState(false);
-    const []
+    // const []
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -84,7 +84,7 @@ function PostSignInContent(props) {
 
                 {
                     show?
-                        if(state.auth === true)
+                        // if(state.auth === true)
                     <Form onSubmit={handleSubmit} show={show} onHide={handleClose}>
                     <FormGroup className="mt-3">
                     <FormLabel>Email</FormLabel>

@@ -7,6 +7,7 @@
     background-color: #01C5FF !important;
     width: 15%;
     color: white;
+    text-align: center;
 }
 
 .navLinkBody {
@@ -32,9 +33,28 @@
     background-color: #00485e !important;
 }
 
+@media screen and (max-width:2160px) {
+    .navbar-body {
+        width: 15%;
+    }
+}
+@media screen and (max-width:1180px) {
+    .navbar-body {
+        width: 25%;
+    }
+}
 @media screen and (max-width:768px) {
     .navbar-body {
         width: 40%;
     }
 }
-
+@media screen and (max-width:468px) {
+    .navbar-body {
+        width: 60%;
+    }
+}
+@media screen and (max-width:268px) {
+    .navbar-body {
+        width: 100%;
+    }
+}
