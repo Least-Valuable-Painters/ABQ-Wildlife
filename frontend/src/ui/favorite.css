@@ -1,11 +1,21 @@
-.background {
-    background-color: #FFFFFF;
-    width: 50%;
-    margin: auto;
+.favoriteBackground {
+    padding: 3rem 0 3rem 0;
+    margin: 0;
+    background: url("../img/favoriteBackground.jpg") no-repeat;
+
 }
 
+.favoriteModule {
+    opacity: 0.9;
+    width: 70%;
+    color: #686868;
+    font-size: medium;
+    font-family: sans-serif;
+    text-align: center;
+}
 
 h1 {
+    margin: 0;
     padding-top: 25px;
     padding-bottom: 25px;
     color: #9F9F9F;
@@ -20,6 +30,10 @@ h1 {
     font-size: medium;
     font-family: sans-serif;
     text-align: center;
+}
+
+.list-group {
+    padding: 0 3rem 3rem 3rem;
 }
 
 .list-group .list-group-item:hover {
